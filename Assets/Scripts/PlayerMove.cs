@@ -87,8 +87,8 @@ public class PlayerMove : MonoBehaviour
         {
             if (collider.CompareTag("Monster"))
             {
-                isAtk = true;
                 GetComponent<PlayerAtk>().Attack();
+                isAtk = true;
             }
         }
     }

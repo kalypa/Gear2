@@ -9,15 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d79e6789fc4f7a479940647dc40a148, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: c26c619792b3a2c4dbb7e9b1b1487670, type: 3}
+  m_Name: Monster4
   m_EditorClassIdentifier: 
-  level: 1
-  atk: 4
-  maxHp: 100
-  hp: 100
-  mp: 30
-  atkSpeed: 1
-  criticalProbability: 0
-  criticalDamageAmount: 0
-  selfhealing: 0
+  atk: 0
+  hp: 0
+  maxHp: 0

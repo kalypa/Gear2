@@ -7,6 +7,7 @@ public class PlayerStat : ScriptableObject
 {
     public int level;
     public int atk;
+    public int maxHp;
     public int hp;
     public int mp;
     public float atkSpeed;

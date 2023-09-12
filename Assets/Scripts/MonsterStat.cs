@@ -7,4 +7,5 @@ public class MonsterStat : ScriptableObject
 {
     public int atk;
     public int hp;
+    public int maxHp;
 }

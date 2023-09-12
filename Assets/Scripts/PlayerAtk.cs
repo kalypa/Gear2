@@ -17,6 +17,7 @@ public class PlayerAtk : MonoBehaviour
     {
         if (canAttack)
         {
+            Debug.Log("АјАн");
             var gm = GameManager.Inst;
             canAttack = false;
             animator.SetTrigger("IsAtk");
@@ -24,7 +25,7 @@ public class PlayerAtk : MonoBehaviour
 
             foreach (Collider2D collider in colliders)
             {
-                if (collider.CompareTag("Monster")) collider.GetComponent<MonsterEvent>().Damaged(gm.monsterStats[gm.currentStage].hp, gm.playerStat.atk);
+                if (collider.CompareTag("Monster")) collider.GetComponent<MonsterEvent>().Damaged(collider.GetComponent<MonsterEvent>().currenthp, gm.playerStat.atk);
             }
             Invoke("ResetAttackCooldown", GameManager.Inst.playerStat.atkSpeed);
         }

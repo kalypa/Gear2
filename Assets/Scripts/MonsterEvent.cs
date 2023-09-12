@@ -3,20 +3,29 @@ using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
 {
     public ParticleSystem deadEffect;
     private SkeletonAnimation animator;
+    public int currenthp;
+    public int maxHp;
+    public MonsterHealthBar healthBar;
     void Start()
     {
         animator = GetComponent<SkeletonAnimation>();
+        currenthp = GameManager.Inst.monsterStats[GameManager.Inst.currentStage].hp;
+        maxHp = GameManager.Inst.monsterStats[GameManager.Inst.currentStage].maxHp;
+        healthBar.SetHealth(currenthp, maxHp);
     }
 
     public void Damaged(int hp, int damage)
     {
-        hp = hp - damage;
-        if (hp <= 0) Dead();
+        currenthp = hp - damage;
+        if (!healthBar.gameObject.activeSelf) healthBar.gameObject.SetActive(true);
+        healthBar.SetHealth(currenthp, maxHp);
+        if (currenthp <= 0) Dead();
     }
     public void Healed(int hp, int heal) { }
     public void Dead()
