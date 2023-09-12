@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
 {
-    public MonsterStat stat;
     public ParticleSystem deadEffect;
     private SkeletonAnimation animator;
     void Start()

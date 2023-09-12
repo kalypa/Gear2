@@ -817,6 +817,12 @@ MonoBehaviour:
   currentStage: 0
   monsterCount: 0
   playerStat: {fileID: 11400000, guid: ae6cfb2486705b94293491a6d5196c37, type: 2}
+  monsterStats:
+  - {fileID: 11400000, guid: 4a47d7b466de2924c91bdb6fb269b690, type: 2}
+  - {fileID: 11400000, guid: 246852c39e038ad429df827dfa120e13, type: 2}
+  - {fileID: 11400000, guid: 52a9bbed9e064b047869fbc795897147, type: 2}
+  - {fileID: 11400000, guid: 5ac7eaf5e5d77b549b40d49e7a172236, type: 2}
+  bossStats: {fileID: 0}
 --- !u!1 &604278352
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +837,7 @@ GameObject:
   - component: {fileID: 604278356}
   - component: {fileID: 604278357}
   - component: {fileID: 604278358}
+  - component: {fileID: 604278359}
   m_Layer: 6
   m_Name: Player_Normal
   m_TagString: Player
@@ -940,6 +947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   variableJoystick: {fileID: 1235313832}
+  target: {fileID: 0}
   MoveSpeed: 5
 --- !u!61 &604278357
 BoxCollider2D:
@@ -988,6 +996,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &604278359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604278352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278ae85d26d7bf542bea24397a533f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 0.5
 --- !u!1 &610068123
 GameObject:
   m_ObjectHideFlags: 0
