@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour 
+public class PlayerMove : MoveModule<Animator>
 {
     private SpriteRenderer spriteRenderer;
-    private Animator animator;
-    private Rigidbody2D rigidBody;
     public VariableJoystick variableJoystick;
-    public Transform target;
-    public float MoveSpeed;
-    private bool isChased = false;
-    private bool isAtk = false;
-    private float moveSpeed { get => MoveSpeed; set => MoveSpeed = value; }
 
     void Start()
     {
@@ -26,7 +19,7 @@ public class PlayerMove : MonoBehaviour
         Move();
     }
 
-    void Move()
+    public override void Move()
     {
         float horizontal = variableJoystick.Horizontal;
         float vertical = variableJoystick.Vertical;
@@ -39,7 +32,7 @@ public class PlayerMove : MonoBehaviour
         else RunAnim(horizontal, vertical);
     }
 
-    void Flip(float horizontal)
+    public override void Flip(float horizontal)
     {
         if(Mathf.Abs(horizontal) > 0) spriteRenderer.flipX = horizontal < 0;
     }

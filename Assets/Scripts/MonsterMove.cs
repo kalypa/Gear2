@@ -4,15 +4,8 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class MonsterMove : MonoBehaviour
+public class MonsterMove : MoveModule<SkeletonAnimation>
 {
-    public Transform target;
-    public float MoveSpeed;
-    private float moveSpeed { get => MoveSpeed; set => MoveSpeed = value; }
-    private Rigidbody2D rigidBody;
-    private SkeletonAnimation animator;
-    private bool isChased = false;
-    private bool isAtk = false;
     void Start()
     {
         target = FindAnyObjectByType<PlayerMove>().transform;
@@ -23,10 +16,10 @@ public class MonsterMove : MonoBehaviour
 
     void Update()
     {
-        ChaseTarget();
+        Move();
     }
 
-    void ChaseTarget()
+    public override void Move()
     {
         if (target != null)
         {
@@ -43,7 +36,8 @@ public class MonsterMove : MonoBehaviour
             }
         }
     }
-    void Flip(float dir)
+
+    public override void Flip(float dir)
     {
         if (dir <= 0) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         else transform.rotation = Quaternion.identity;

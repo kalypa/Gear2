@@ -2,24 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAtk : MonoBehaviour
+public class PlayerAtk : AtkModule<Animator>
 {
-    public float attackRadius = 3f;
 
-    private bool canAttack = true;
-    private Animator animator;
-    private void Start()
+    protected override void Start()
     {
-        animator = GetComponent<Animator>();
+        base.Start();
+        attackRadius = 1f;
     }
 
     public void Attack()
     {
-        if (canAttack)
+        if (isAtk)
         {
-            Debug.Log("АјАн");
             var gm = GameManager.Inst;
-            canAttack = false;
+            isAtk = false;
             animator.SetTrigger("IsAtk");
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, attackRadius);
 
@@ -33,12 +30,6 @@ public class PlayerAtk : MonoBehaviour
 
     private void ResetAttackCooldown()
     {
-        canAttack = true;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
+        isAtk = true;
     }
 }
