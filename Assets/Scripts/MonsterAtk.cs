@@ -1,3 +1,4 @@
+using Spine;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,52 +6,41 @@ using UnityEngine;
 
 public class MonsterAtk : MonoBehaviour
 {
-    public float attackRadius = 3f;
+    public float attackRadius = 0.5f;
     private SkeletonAnimation animator;
-
-    private bool canAttack = true;
+    private bool isAtk = false;
     void Start()
     {
         animator = GetComponent<SkeletonAnimation>();
     }
 
-
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        FindEnemy();
-    }
-    void FindEnemy()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, attackRadius);
-
-        foreach (Collider2D collider in colliders)
+        if (collision.CompareTag("Player"))
         {
-            if (collider.CompareTag("Player"))
-            {
-                Attack();
-            }
+            isAtk = true;
+            StartCoroutine(Attack(collision));
         }
     }
-
-    public void Attack()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (canAttack)
-        {
-            var gm = GameManager.Inst;
-            canAttack = false;
-            animator.AnimationState.SetAnimation(0, "Attack", true);
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, attackRadius);
-
-            foreach (Collider2D collider in colliders)
-            {
-                if (collider.CompareTag("Monster")) collider.GetComponent<MonsterEvent>().Damaged(gm.monsterStats[gm.currentStage].hp, gm.playerStat.atk);
-            }
-            Invoke("ResetAttackCooldown", 1);
-        }
+        isAtk = false;
     }
-
-    private void ResetAttackCooldown()
+    IEnumerator Attack(Collider2D collision)
     {
-        canAttack = true;
+        while (true)
+        {
+            if(isAtk)
+            {
+                var gm = GameManager.Inst;
+                animator.AnimationState.SetAnimation(0, "Attack", false);
+                collision.GetComponent<PlayerEvent>().Damaged(gm.playerStat.hp, gm.monsterStats[gm.currentStage].atk);
+                yield return new WaitForSeconds(1f);
+            }
+            else
+            {
+                break;
+            }
+        }
     }
 }

@@ -12,6 +12,7 @@ public class MonsterMove : MonoBehaviour
     private Rigidbody2D rigidBody;
     private SkeletonAnimation animator;
     private bool isChased = false;
+    private bool isAtk = false;
     void Start()
     {
         target = FindAnyObjectByType<PlayerMove>().transform;
@@ -29,19 +30,34 @@ public class MonsterMove : MonoBehaviour
     {
         if (target != null)
         {
-            if(!isChased)
+            if (!isAtk)
             {
-                animator.AnimationState.SetAnimation(0, "Walk", true);
-                isChased = true;
+                if (!isChased)
+                {
+                    animator.AnimationState.SetAnimation(0, "Walk", true);
+                    isChased = true;
+                }
+                Vector3 targetDirection = (target.position - transform.position).normalized;
+                Flip(targetDirection.x);
+                transform.position += targetDirection * moveSpeed * Time.deltaTime;
             }
-            Vector3 targetDirection = (target.position - transform.position).normalized;
-            Flip(targetDirection.x);
-            transform.position += targetDirection * moveSpeed * Time.deltaTime;
         }
     }
     void Flip(float dir)
     {
         if (dir <= 0) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         else transform.rotation = Quaternion.identity;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player")) isAtk = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isChased = false;
+            isAtk = false;
+        }
     }
 }

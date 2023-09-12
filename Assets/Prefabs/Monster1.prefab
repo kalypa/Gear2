@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4747181610843953963}
   - component: {fileID: 9023058753869116589}
   - component: {fileID: 2638191316181439498}
+  - component: {fileID: 4680872112103649514}
   m_Layer: 7
   m_Name: Monster1
   m_TagString: Monster
@@ -150,7 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d619f357ae852bb44a4eb9c07b79a44b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 11400000, guid: 4a47d7b466de2924c91bdb6fb269b690, type: 2}
   deadEffect: {fileID: 0}
 --- !u!61 &2638191316181439498
 BoxCollider2D:
@@ -176,5 +176,18 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7318573, y: 2.3050787}
+  m_Size: {x: 3.21, y: 3.26}
   m_EdgeRadius: 0
+--- !u!114 &4680872112103649514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5070994396265275618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94df4d3d140d6624b8a0c60c05f8ba61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 0.5
