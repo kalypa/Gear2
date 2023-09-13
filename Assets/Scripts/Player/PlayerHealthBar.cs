@@ -15,6 +15,5 @@ public class PlayerHealthBar : MonoBehaviour
     public void SetHealth(float currentHealth, float maxHealth)
     {
         healthImage.fillAmount = currentHealth / maxHealth;
-        Debug.Log(healthImage.fillAmount);
     }
 }
