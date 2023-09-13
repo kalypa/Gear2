@@ -14,6 +14,7 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     public MonsterHealthBar healthBar;
     private MonsterMove move;
     private MonsterAtk atk;
+    private MeshRenderer meshRenderer;
     void Start()
     {
         animator = GetComponent<SkeletonAnimation>();
@@ -21,6 +22,7 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         maxHp = GameManager.Inst.monsterStats[GameManager.Inst.currentStage].maxHp;
         move = GetComponent<MonsterMove>();
         atk = GetComponent<MonsterAtk>();
+        meshRenderer = GetComponent<MeshRenderer>();
         healthBar.SetHealth(currenthp, maxHp);
     }
 
@@ -34,26 +36,32 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     public void Healed(int hp, int heal) { }
     public void Dead()
     {
-        atk.isDead = true;
-        move.isDead = true;
-        animator.AnimationState.SetAnimation(0, "Dead", false);
-        Invoke("DeadEffect", 1f);
+        if(!atk.isDead && !move.isDead)
+        {
+            atk.isDead = true;
+            move.isDead = true;
+            healthBar.gameObject.SetActive(false);
+            animator.AnimationState.SetAnimation(0, "Dead", false);
+            Invoke("DeadEffect", 1f);
+        }
     }
 
     void DeadEffect()
     {
+        meshRenderer.enabled = false;
         deadEffect.gameObject.SetActive(true);
-        if(!deadEffect.isPlaying)
-        {
-            PoolManager.Instance.TakeToPool<MonsterEvent>(name, this);
-            GameManager.Inst.monsterCount -= 1;
-        }
+        Invoke("ResetMonster", 1f);
     }
-
+    void ResetMonster()
+    {
+        PoolManager.Instance.TakeToPool<MonsterEvent>(name, GetComponent<MonsterEvent>());
+        GameManager.Inst.monsterCount -= 1;
+    }
     public void OnCreatedInPool() { }
 
     public void OnGettingFromPool()
     {
-        //deadEffect.gameObject.SetActive(false);
+        if(meshRenderer != null) meshRenderer.enabled = true;
+        if(deadEffect != null) deadEffect.gameObject.SetActive(false);
     }
 }

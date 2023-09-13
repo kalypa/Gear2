@@ -14973,6 +14973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278ae85d26d7bf542bea24397a533f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   attackRadius: 0.5
 --- !u!50 &1385921220
 Rigidbody2D:
@@ -15034,6 +15035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
+  isDead: 0
   variableJoystick: {fileID: 1555397477}
 --- !u!95 &1385921223
 Animator:
