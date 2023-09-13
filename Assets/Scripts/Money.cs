@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Money
 {
+    public int Index
+    {
+        get
+        {
+            update();
+            return index;
+        }
+    }
+
     double current;  // ÇöÀç Ç¥½ÃÇØ¾ßÇÏ´Â µ·
     int index;
     int[] money; // µ· 1.0A ~ 999Z ±îÁö ¸¸µé±â
@@ -14,21 +23,21 @@ public class Money
     }
 
     static public Money ReturnMoney(int index, int amount)
-	{
+    {
         Money money = new Money();
         money.index = index;
-        money.money[index - 1] = amount;
+        money.money[index] = amount;
         return money;
     }
 
     public void SetMoney(int[] money)
-	{
+    {
         this.money = money;
-	}
+    }
 
     public void EarnMoney(Money p_money)
     {   // µ· ¹ú±â
-        for (int i = 0; i < p_money.index; i++)
+        for (int i = 0; i <= p_money.index; i++)
         {
             money[i] += p_money.money[i];
         }
@@ -36,7 +45,7 @@ public class Money
 
     public void SpendMoney(Money p_money)
     {  // µ· ¾²±â
-        for (int i = 0; i < p_money.index; i++)
+        for (int i = 0; i <= p_money.index; i++)
         {
             money[i] -= p_money.money[i];
 
@@ -45,7 +54,6 @@ public class Money
 
     public double getmoney()
     {   // ÇöÀç µ· Á¤º¸ ¹Þ¾Æ¿À±â
-
         if (index > 0)
         {
             current = money[index] + (double)(money[index - 1] / 1000);
@@ -58,7 +66,7 @@ public class Money
     }
 
     public void update()
-    { 
+    {
         // µ·¹ú¾ú±â ÇßÀ»‹š µ· ´ÜÀ§ Á¤¸®
         for (int i = 0; i < 26; i++)
         {
@@ -67,8 +75,8 @@ public class Money
                 money[i + 1] += money[i] / 1000;
                 money[i] %= 1000;
             }
-            else if(money[i] < 0 && money[i + 1] > 0)
-			{
+            else if (money[i] < 0 && money[i + 1] > 0)
+            {
                 --money[i + 1];
                 money[i] += 1000;
             }

@@ -9,13 +9,14 @@ public class GoldManager : MonoBehaviour
 {
     public TextMeshProUGUI text;
     Money gold;
-    private void Update()
+    private void Start()
     {
+        gold.EarnMoney(Money.ReturnMoney(1, 0));
         GoldText();
     }
 
-    void GoldText()
+    void GoldText(Money money)
     {
-        text.text = gold.GetMoney();
+        text.text = money.GetMoney();
     }
 }
