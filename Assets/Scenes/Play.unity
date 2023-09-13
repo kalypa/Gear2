@@ -1751,17 +1751,12 @@ MonoBehaviour:
     _count: 0
     _container: {fileID: 591192531}
     _nonLazy: 0
-  - _name: Monster1
+  - _name: Monster2
     _component: {fileID: 9023058753869116589, guid: 81db5fc2e421f1e48a79307a8f32fb16, type: 3}
     _count: 0
     _container: {fileID: 591192531}
     _nonLazy: 0
-  - _name: Monster1
-    _component: {fileID: 9023058753869116589, guid: 81db5fc2e421f1e48a79307a8f32fb16, type: 3}
-    _count: 0
-    _container: {fileID: 591192531}
-    _nonLazy: 0
-  - _name: Monster1
+  - _name: Monster3
     _component: {fileID: 9023058753869116589, guid: 81db5fc2e421f1e48a79307a8f32fb16, type: 3}
     _count: 0
     _container: {fileID: 591192531}
@@ -1769,7 +1764,7 @@ MonoBehaviour:
   - _name: DamageText
     _component: {fileID: 0}
     _count: 0
-    _container: {fileID: 1300434759}
+    _container: {fileID: 0}
     _nonLazy: 0
 --- !u!4 &271443935
 Transform:
@@ -3248,7 +3243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &666430606
 Transform:
   m_ObjectHideFlags: 0
@@ -5695,37 +5690,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220155997}
   m_CullTransparentMesh: 1
---- !u!1 &1300434758
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1300434759}
-  m_Layer: 0
-  m_Name: DamageTextContainer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1300434759
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1300434758}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1310206387
 GameObject:
   m_ObjectHideFlags: 0
@@ -7940,7 +7904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1621437319
 Transform:
   m_ObjectHideFlags: 0

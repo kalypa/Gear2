@@ -33,10 +33,6 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         currenthp = hp - damage;
         if (!healthBar.gameObject.activeSelf) healthBar.gameObject.SetActive(true);
         healthBar.SetHealth(currenthp, maxHp);
-        var hudText = PoolManager.Instance.GetFromPool<DamageText>(4); 
-        hudText.GetComponent<DamageText>().damage = damage;
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-        hudText.GetComponent<DamageText>().spawnPosition.position = screenPos + new Vector3(0, 80f, 0);
         if (currenthp <= 0) Dead();
     }
     public void Healed(int hp, int heal) { }
