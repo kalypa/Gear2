@@ -28,13 +28,10 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
 
     public void Damaged(int hp, int damage)
     {
+        currenthp = hp - damage;
+        if (!healthBar.gameObject.activeSelf) healthBar.gameObject.SetActive(true);
+        healthBar.SetHealth(currenthp, maxHp);
         if (currenthp <= 0) Dead();
-        else
-        {
-            currenthp = hp - damage;
-            if (!healthBar.gameObject.activeSelf) healthBar.gameObject.SetActive(true);
-            healthBar.SetHealth(currenthp, maxHp);
-        }
     }
     public void Healed(int hp, int heal) { }
     public void Dead()
