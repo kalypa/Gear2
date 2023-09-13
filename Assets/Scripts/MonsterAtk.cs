@@ -28,7 +28,7 @@ public class MonsterAtk : AtkModule<SkeletonAnimation>
     {
         while (true)
         {
-            if(isAtk)
+            if(isAtk && !isDead)
             {
                 var gm = GameManager.Inst;
                 animator.AnimationState.SetAnimation(0, "Attack", false);

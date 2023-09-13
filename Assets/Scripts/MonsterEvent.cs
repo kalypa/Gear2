@@ -12,11 +12,15 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     public int currenthp;
     public int maxHp;
     public MonsterHealthBar healthBar;
+    private MonsterMove move;
+    private MonsterAtk atk;
     void Start()
     {
         animator = GetComponent<SkeletonAnimation>();
         currenthp = GameManager.Inst.monsterStats[GameManager.Inst.currentStage].hp;
         maxHp = GameManager.Inst.monsterStats[GameManager.Inst.currentStage].maxHp;
+        move = GetComponent<MonsterMove>();
+        atk = GetComponent<MonsterAtk>();
         healthBar.SetHealth(currenthp, maxHp);
     }
 
@@ -30,6 +34,8 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     public void Healed(int hp, int heal) { }
     public void Dead()
     {
+        atk.isDead = true;
+        move.isDead = true;
         animator.AnimationState.SetAnimation(0, "Dead", false);
         Invoke("DeadEffect", 1f);
     }

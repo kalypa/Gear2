@@ -6,6 +6,7 @@ public abstract class AtkModule<T> : MonoBehaviour
 {
     protected T animator;
     protected bool isAtk = true;
+    public bool isDead = false;
     public float attackRadius;
 
     protected virtual void Start()

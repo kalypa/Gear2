@@ -23,7 +23,7 @@ public class MonsterMove : MoveModule<SkeletonAnimation>
     {
         if (target != null)
         {
-            if (!isAtk)
+            if (!isAtk && !isDead)
             {
                 if (!isChased)
                 {

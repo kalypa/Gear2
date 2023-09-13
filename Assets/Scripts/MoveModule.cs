@@ -11,6 +11,7 @@ public abstract class MoveModule<T> : MonoBehaviour
     protected Transform target;
     protected Rigidbody2D rigidBody;
     protected T animator;
+    public bool isDead = false;
     public abstract void Flip(float dir);
     public abstract void Move();
 }

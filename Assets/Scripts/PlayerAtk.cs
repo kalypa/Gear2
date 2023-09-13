@@ -13,7 +13,7 @@ public class PlayerAtk : AtkModule<Animator>
 
     public void Attack()
     {
-        if (isAtk)
+        if (isAtk && !isDead)
         {
             var gm = GameManager.Inst;
             isAtk = false;
