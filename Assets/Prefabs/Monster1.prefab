@@ -421,8 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e04b9287bbbde244a27d3410a0c5884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  MoveSpeed: 1
+  MoveSpeed: 0.6
 --- !u!114 &9023058753869116589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deadEffect: {fileID: 0}
-  hp: 0
+  currenthp: 0
   maxHp: 0
   healthBar: {fileID: 8393507800485147242}
 --- !u!61 &2638191316181439498
