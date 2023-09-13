@@ -12,7 +12,7 @@ public class Money
             return index;
         }
     }
-
+    char[] unit = new char[5];
     double current;  // 현재 표시해야하는 돈
     int index;
     int[] money; // 돈 1.0A ~ 999Z 까지 만들기
@@ -56,7 +56,8 @@ public class Money
     {   // 현재 돈 정보 받아오기
         if (index > 0)
         {
-            current = money[index] + (double)(money[index - 1] / 10000);
+            current = money[index] + ((double)money[index - 1] / 1000);
+            Debug.Log(current);
         }
         else
         {
@@ -70,15 +71,15 @@ public class Money
         // 돈벌었기 했을떄 돈 단위 정리
         for (int i = 0; i < 26; i++)
         {
-            if (money[i] >= 10000)
+            if (money[i] >= 1000)
             {
-                money[i + 1] += money[i] / 10000;
-                money[i] %= 10000;
+                money[i + 1] += money[i] / 1000;
+                money[i] %= 1000;
             }
             else if (money[i] < 0 && money[i + 1] > 0)
             {
                 --money[i + 1];
-                money[i] += 10000;
+                money[i] += 1000;
             }
         }
         for (int i = 0; i < 26; i++)
@@ -90,7 +91,7 @@ public class Money
         }
         if (index > 0)
         {
-            current = money[index] + (double)(money[index - 1] / 10000);
+            current = money[index] + (double)(money[index - 1] / 1000);
         }
         else
         {
@@ -100,12 +101,19 @@ public class Money
 
     public string GetMoney()
     {  // 문자열로 돈액수 받아오기.
+        InitUnit();
         update();
         string s = "";
-        char unit;
-        unit = (char)(65 + index);
-        if (index != 0) s = getmoney().ToString() + unit.ToString();
+        if (index != 0) s = getmoney().ToString("F3") + unit[index - 1].ToString();
         else s = getmoney().ToString();
         return s;
+    }
+
+    void InitUnit()
+    {
+        unit[0] = 'K';
+        unit[1] = 'M';
+        unit[2] = 'B';
+        unit[3] = 'T';
     }
 }

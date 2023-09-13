@@ -9,5 +9,6 @@ public class MonsterStat : ScriptableObject
     public int hp;
     public int maxHp;
     public int gold;
+    public int goldIndex;
     public int xp;
 }

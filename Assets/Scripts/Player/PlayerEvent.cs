@@ -7,9 +7,19 @@ using UnityEngine;
 public class PlayerEvent : MonoBehaviour, StatEvent
 {
     public ParticleSystem deadEffect;
+    public PlayerHealthBar healthBar;
+    public int currenthp;
+    public int maxHp;
+    private void Start()
+    {
+        currenthp = GameManager.Inst.playerStat.hp;
+        maxHp = GameManager.Inst.playerStat.maxHp;
+        healthBar.SetHealth(currenthp, maxHp);
+    }
     public void Damaged(int hp, int damage)
     {
-        hp = hp - damage;
+        currenthp = hp - damage;
+        healthBar.SetHealth(currenthp, maxHp);
         if (hp <= 0) Dead();
     }
     public void Healed(int hp, int heal) { }

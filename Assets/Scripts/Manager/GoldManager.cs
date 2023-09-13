@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GoldManager : MonoSingleton<GoldManager>
 {
     public TextMeshProUGUI text;
-    Money gold;
+    public Money gold;
     private void Start()
     {
         gold = new Money();
@@ -23,9 +23,9 @@ public class GoldManager : MonoSingleton<GoldManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
-            gold.EarnMoney(Money.ReturnMoney(0, 10));
+            gold.EarnMoney(Money.ReturnMoney(0, 100));
         }
         GoldText(gold);
     }

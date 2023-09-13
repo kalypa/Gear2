@@ -38,6 +38,8 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     {
         if(!atk.isDead && !move.isDead)
         {
+            var inst = GameManager.Inst;
+            GoldManager.Inst.gold.EarnMoney(Money.ReturnMoney(inst.monsterStats[inst.currentStage].goldIndex, inst.monsterStats[inst.currentStage].gold));
             atk.isDead = true;
             move.isDead = true;
             healthBar.gameObject.SetActive(false);

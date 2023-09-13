@@ -5,7 +5,6 @@ public class MonsterHealthBar : MonoBehaviour
 {
     public Slider healthSlider;
     public Transform target;
-    public MonsterEvent monsterEvent;
     private void Update()
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(target.position);
