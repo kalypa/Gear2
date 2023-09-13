@@ -28,10 +28,13 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
 
     public void Damaged(int hp, int damage)
     {
-        currenthp = hp - damage;
-        if (!healthBar.gameObject.activeSelf) healthBar.gameObject.SetActive(true);
-        healthBar.SetHealth(currenthp, maxHp);
         if (currenthp <= 0) Dead();
+        else
+        {
+            currenthp = hp - damage;
+            if (!healthBar.gameObject.activeSelf) healthBar.gameObject.SetActive(true);
+            healthBar.SetHealth(currenthp, maxHp);
+        }
     }
     public void Healed(int hp, int heal) { }
     public void Dead()
@@ -65,6 +68,6 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         if(deadEffect != null) deadEffect.gameObject.SetActive(false);
         if(atk != null) atk.isDead = false;
         if(move != null) move.isDead = false;
-        //if(healthBar != null) healthBar.SetHealth(currenthp, maxHp);
+        if(healthBar != null) healthBar.SetHealth(currenthp, maxHp);
     }
 }

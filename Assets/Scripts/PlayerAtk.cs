@@ -22,7 +22,7 @@ public class PlayerAtk : AtkModule<Animator>
 
             foreach (Collider2D collider in colliders)
             {
-                if (collider.CompareTag("Monster")) collider.GetComponent<MonsterEvent>().Damaged(collider.GetComponent<MonsterEvent>().currenthp, gm.playerStat.atk);
+                if (collider.CompareTag("Monster") && !collider.GetComponent<MonsterAtk>().isDead) collider.GetComponent<MonsterEvent>().Damaged(collider.GetComponent<MonsterEvent>().currenthp, gm.playerStat.atk);
             }
             Invoke("ResetAttackCooldown", GameManager.Inst.playerStat.atkSpeed);
         }
