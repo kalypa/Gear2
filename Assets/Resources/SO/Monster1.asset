@@ -15,3 +15,5 @@ MonoBehaviour:
   atk: 1
   hp: 20
   maxHp: 20
+  gold: 10
+  xp: 4
