@@ -56,7 +56,7 @@ public class Money
     {   // ÇöÀç µ· Á¤º¸ ¹Þ¾Æ¿À±â
         if (index > 0)
         {
-            current = money[index] + (double)(money[index - 1] / 1000);
+            current = money[index] + (double)(money[index - 1] / 10000);
         }
         else
         {
@@ -70,15 +70,15 @@ public class Money
         // µ·¹ú¾ú±â ÇßÀ»‹š µ· ´ÜÀ§ Á¤¸®
         for (int i = 0; i < 26; i++)
         {
-            if (money[i] >= 1000)
+            if (money[i] >= 10000)
             {
-                money[i + 1] += money[i] / 1000;
-                money[i] %= 1000;
+                money[i + 1] += money[i] / 10000;
+                money[i] %= 10000;
             }
             else if (money[i] < 0 && money[i + 1] > 0)
             {
                 --money[i + 1];
-                money[i] += 1000;
+                money[i] += 10000;
             }
         }
         for (int i = 0; i < 26; i++)
@@ -90,7 +90,7 @@ public class Money
         }
         if (index > 0)
         {
-            current = money[index] + (double)(money[index - 1] / 1000);
+            current = money[index] + (double)(money[index - 1] / 10000);
         }
         else
         {
@@ -104,8 +104,8 @@ public class Money
         string s = "";
         char unit;
         unit = (char)(65 + index);
-
-        s = getmoney().ToString() + unit.ToString();
+        if (index != 0) s = getmoney().ToString() + unit.ToString();
+        else s = getmoney().ToString();
         return s;
     }
 }

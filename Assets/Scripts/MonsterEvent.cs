@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
 {
     public ParticleSystem deadEffect;
