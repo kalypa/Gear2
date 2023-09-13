@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerTransform : MonoBehaviour
 {
-    public Animator lightEffectAnimator;
-    public GameObject toDarkButton;
-    public GameObject toWhiteButton;
-    public GameObject darkToNormalButton;
-    public GameObject whiteToNormalButton;
+    [SerializeField] private Animator lightEffectAnimator;
+    [SerializeField] private GameObject toDarkButton;
+    [SerializeField] private GameObject toWhiteButton;
+    [SerializeField] private GameObject darkToNormalButton;
+    [SerializeField] private GameObject whiteToNormalButton;
+    [SerializeField] private Image mainSkillIcon;
     private Animator animator;
     private int playermode = 1;
     private void Start()
