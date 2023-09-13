@@ -32,7 +32,10 @@ public class MonsterAtk : AtkModule<SkeletonAnimation>
             {
                 var gm = GameManager.Inst;
                 animator.AnimationState.SetAnimation(0, "Attack", false);
-                collision.GetComponent<PlayerEvent>().Damaged(gm.playerStat.hp, gm.monsterStats[gm.currentStage].atk);
+                if(!GameManager.Inst.playerTransform.isTransform)
+                {
+                    collision.GetComponent<PlayerEvent>().Damaged(gm.playerStat.hp, gm.monsterStats[gm.currentStage].atk);
+                }
                 yield return new WaitForSeconds(1f);
             }
             else

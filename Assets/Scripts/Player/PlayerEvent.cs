@@ -13,11 +13,11 @@ public class PlayerEvent : MonoBehaviour, StatEvent
     private void Start()
     {
         maxHp = GameManager.Inst.playerStat.maxHp;
-        healthBar.SetHealth(currenthp, maxHp);
+        GameManager.Inst.playerStat.hp = maxHp;
+        healthBar.SetHealth(maxHp, maxHp);
     }
     public void Damaged(int hp, int damage)
     {
-        Debug.Log("µ¥¹ÌÁö");
         GameManager.Inst.playerStat.hp = hp - damage;
         healthBar.SetHealth(GameManager.Inst.playerStat.hp, maxHp);
         if (hp <= 0) Dead();

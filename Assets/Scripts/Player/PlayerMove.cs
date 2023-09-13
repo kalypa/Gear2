@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerMove : MoveModule<Animator>
 {
     private SpriteRenderer spriteRenderer;
-    public VariableJoystick variableJoystick;
-
+    [SerializeField] private VariableJoystick variableJoystick;
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -47,29 +46,32 @@ public class PlayerMove : MoveModule<Animator>
 
     void FindClosestEnemy()
     {
-        if (!isChased)
+        if(!GameManager.Inst.playerTransform.isTransform)
         {
-            animator.SetBool("IsMove", true);
-            isChased = true;
-        }
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Monster");
-        float closestDistance = Mathf.Infinity;
-        Transform closestEnemy = null;
-
-        foreach (GameObject enemy in enemies)
-        {
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < closestDistance)
+            if (!isChased)
             {
-                closestDistance = distance;
-                closestEnemy = enemy.transform;
+                animator.SetBool("IsMove", true);
+                isChased = true;
             }
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Monster");
+            float closestDistance = Mathf.Infinity;
+            Transform closestEnemy = null;
+
+            foreach (GameObject enemy in enemies)
+            {
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestEnemy = enemy.transform;
+                }
+            }
+            target = closestEnemy;
+            Vector3 targetDirection = (closestEnemy.position - transform.position).normalized;
+            if (!isAtk) transform.position += targetDirection * moveSpeed * Time.deltaTime;
+            Flip(targetDirection.x);
+            FindEnemy();
         }
-        target = closestEnemy;
-        Vector3 targetDirection = (closestEnemy.position - transform.position).normalized;
-        if (!isAtk) transform.position += targetDirection * moveSpeed * Time.deltaTime;
-        Flip(targetDirection.x);
-        FindEnemy();
     }
 
     void FindEnemy()

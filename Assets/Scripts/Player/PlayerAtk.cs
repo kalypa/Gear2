@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerAtk : AtkModule<Animator>
 {
-
     protected override void Start()
     {
         base.Start();
@@ -13,7 +12,7 @@ public class PlayerAtk : AtkModule<Animator>
 
     public void Attack()
     {
-        if (isAtk && !isDead)
+        if (isAtk && !isDead && !GameManager.Inst.playerTransform.isTransform)
         {
             var gm = GameManager.Inst;
             isAtk = false;

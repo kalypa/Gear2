@@ -17,6 +17,8 @@ MonoBehaviour:
   maxHp: 100
   hp: 100
   mp: 30
+  maxXp: 0
+  xp: 0
   atkSpeed: 1
   criticalProbability: 0
   criticalDamageAmount: 0

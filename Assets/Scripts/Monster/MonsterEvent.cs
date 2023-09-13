@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using static UnityEngine.GraphicsBuffer;
+
 public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
 {
     public ParticleSystem deadEffect;
@@ -31,6 +33,10 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         currenthp = hp - damage;
         if (!healthBar.gameObject.activeSelf) healthBar.gameObject.SetActive(true);
         healthBar.SetHealth(currenthp, maxHp);
+        var hudText = PoolManager.Instance.GetFromPool<DamageText>(4); 
+        hudText.GetComponent<DamageText>().damage = damage;
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+        hudText.GetComponent<DamageText>().spawnPosition.position = screenPos + new Vector3(0, 80f, 0);
         if (currenthp <= 0) Dead();
     }
     public void Healed(int hp, int heal) { }
@@ -68,5 +74,7 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         if(atk != null) atk.isDead = false;
         if(move != null) move.isDead = false;
         if(healthBar != null) healthBar.SetHealth(currenthp, maxHp);
+        if(GameManager.Inst.monsterStats[GameManager.Inst.currentStage] != null) 
+            currenthp = GameManager.Inst.monsterStats[GameManager.Inst.currentStage].hp;
     }
 }
