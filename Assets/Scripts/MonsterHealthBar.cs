@@ -9,7 +9,7 @@ public class MonsterHealthBar : MonoBehaviour
     private void Update()
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(target.position);
-        healthSlider.transform.position = screenPos + new Vector3(0, 60f, 0);
+        healthSlider.transform.position = screenPos + new Vector3(0, 70f, 0);
     }
 
     public void SetHealth(float currentHealth, float maxHealth)

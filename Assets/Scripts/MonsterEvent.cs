@@ -54,7 +54,7 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     }
     void ResetMonster()
     {
-        PoolManager.Instance.TakeToPool<MonsterEvent>(name, GetComponent<MonsterEvent>());
+        PoolManager.Instance.TakeToPool(GameManager.Inst.currentStage, this);
         GameManager.Inst.monsterCount -= 1;
     }
     public void OnCreatedInPool() { }
@@ -63,5 +63,8 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     {
         if(meshRenderer != null) meshRenderer.enabled = true;
         if(deadEffect != null) deadEffect.gameObject.SetActive(false);
+        if(atk != null) atk.isDead = false;
+        if(move != null) move.isDead = false;
+        //if(healthBar != null) healthBar.SetHealth(currenthp, maxHp);
     }
 }
