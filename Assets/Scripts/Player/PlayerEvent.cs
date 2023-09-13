@@ -12,14 +12,14 @@ public class PlayerEvent : MonoBehaviour, StatEvent
     public int maxHp;
     private void Start()
     {
-        currenthp = GameManager.Inst.playerStat.hp;
         maxHp = GameManager.Inst.playerStat.maxHp;
         healthBar.SetHealth(currenthp, maxHp);
     }
     public void Damaged(int hp, int damage)
     {
-        currenthp = hp - damage;
-        healthBar.SetHealth(currenthp, maxHp);
+        Debug.Log("µ¥¹ÌÁö");
+        GameManager.Inst.playerStat.hp = hp - damage;
+        healthBar.SetHealth(GameManager.Inst.playerStat.hp, maxHp);
         if (hp <= 0) Dead();
     }
     public void Healed(int hp, int heal) { }
