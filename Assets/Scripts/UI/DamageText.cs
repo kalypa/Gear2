@@ -1,40 +1,44 @@
+using DG.Tweening;
+using Redcode.Pools;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
-public class DamageText : MonoBehaviour
+public class DamageText : MonoBehaviour, IPoolObject
 {
     public TextMeshProUGUI text;
-    public float floatSpeed = 1.0f;
-    public float duration = 1.0f;
+    public float jumpHeight = 30.0f;
+    public float jumpDuration = 1.0f;
+    private RectTransform rectTransform;
 
-    private float timer = 0.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Destroy(gameObject, 2f);
-    }
-
-    // Update is called once per frame
     void Update()
     {
         TextEffect();
     }
-
     void TextEffect()
     {
-        transform.Translate(Vector3.up * floatSpeed * Time.deltaTime);
-        timer += Time.deltaTime;
 
-        Color textColor = text.color;
-        textColor.a = Mathf.Lerp(1.0f, 0.0f, timer / duration);
-        text.color = textColor;
+        rectTransform = GetComponent<RectTransform>();
+
+        rectTransform.DOJump(new Vector3(700, rectTransform.anchoredPosition.y+500 + jumpHeight, 0), 1, 1, jumpDuration)
+            .SetEase(Ease.OutQuad)
+            .OnComplete(() => Destroy(gameObject));
     }
-
     public void SetText(string dmgText)
     {
         text.text = dmgText;
+    }
+
+    public void OnCreatedInPool()
+    {
+
+    }
+
+    public void OnGettingFromPool()
+    {
+        if(rectTransform != null) rectTransform.anchoredPosition = Vector2.zero;
     }
 }

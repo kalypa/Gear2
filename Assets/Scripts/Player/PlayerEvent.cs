@@ -12,9 +12,6 @@ public class PlayerEvent : MonoBehaviour, StatEvent
     public int currenthp;
     public int maxHp;
     public float maxMp;
-    [SerializeField] private Transform canvas;
-    private DamageText damageText;
-    [SerializeField] private GameObject damageTextPrefab;
     private void Start()
     {
         maxHp = GameManager.Inst.playerStat.maxHp;
@@ -22,7 +19,6 @@ public class PlayerEvent : MonoBehaviour, StatEvent
         GameManager.Inst.playerStat.hp = maxHp;
         GameManager.Inst.playerStat.mp = maxMp;
         healthBar.SetHealth(maxHp, maxHp);
-        damageText = damageTextPrefab.GetComponent<DamageText>();
     }
     public void Damaged(int hp, int damage)
     {
@@ -40,9 +36,9 @@ public class PlayerEvent : MonoBehaviour, StatEvent
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 spawnPos = screenPos + new Vector3(0, 80f, 0);
-        GameObject damageTextObject = Instantiate(damageTextPrefab, spawnPos, Quaternion.identity);
-        damageTextObject.transform.SetParent(canvas);
-        damageText.SetText(damage.ToString());
+        var damageTextObject = PoolManager.Instance.GetFromPool<DamageText>(3);
+        damageTextObject.GetComponent<RectTransform>().anchoredPosition = spawnPos;
+        damageTextObject.SetText(damage.ToString());
     }
     public void Healed(int hp, int heal) { }
     public void Dead()

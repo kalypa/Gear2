@@ -12,7 +12,8 @@ public class PlayerSkill : MainSkillManager
     [SerializeField] private Text scarceText;
     [SerializeField] private SkillStat[] skillStat = new SkillStat[3];
 
-    public List<ParticleSystem> SkillList = new();
+    public List<GameObject> skillList = new();
+    public GameObject[] skills = new GameObject[3];
     private PlayerEvent player;
     private PlayerTransform playerTrans;
 
@@ -23,42 +24,30 @@ public class PlayerSkill : MainSkillManager
     }
     public void OnClickMainSkillbutton()
     {
-        if(isUseSkill && playerTrans.isUseSkill && IsInAttackRange(skillStat[playerTrans.playermode - 1].attackRadius))
+        if(isUseSkill && IsInAttackRange(skillStat[playerTrans.playermode - 1].attackRadius))
         {
             MainSkill();
         }
     }
-    private void Update()
-    {
-        if(!IsInAttackRange(skillStat[playerTrans.playermode - 1].attackRadius))
-        {
-            skillFillAmount.fillAmount = 1;
-            if(skillStat[playerTrans.playermode - 1].costMana > GameManager.Inst.playerStat.mp)
-            {
-                scarceText.text = "마나 부족";
-            }
-            scarceText.text = "대상 거리 밖";
-            skillCoolTimeText.enabled = false;
-        }
-        else
-        {
-            skillFillAmount.fillAmount = 0;
-            scarceText.text = "";
-            skillCoolTimeText.enabled = true;
-        }
-    }
     void MainSkill()
     {
-        SkillList[playerTrans.playermode - 1].transform.position = SkillIndex();
-        SkillList[playerTrans.playermode - 1].gameObject.SetActive(true);
+        skillList[playerTrans.playermode - 1].transform.position = SkillIndex();
+        skillList[playerTrans.playermode - 1].gameObject.SetActive(true);
         UseSkill(skillCoolTimeText, skillFillAmount, skillStat[playerTrans.playermode - 1]);
         player.UseMana(GameManager.Inst.playerStat.mp, skillStat[playerTrans.playermode - 1].costMana);
+        StartCoroutine(SkillAtk());
+        Invoke("EndAtk", 2f);
     }
 
     bool IsInAttackRange(float radius)
     {
         if (NearMonsterPosition(radius).x == transform.position.x && NearMonsterPosition(radius).y == transform.position.y) return false;
         return true;
+    }
+
+    void EndAtk()
+    {
+        skillList[playerTrans.playermode - 1].gameObject.SetActive(false);
     }
 
     Vector2 SkillIndex() => playerTrans.playermode switch
@@ -81,6 +70,20 @@ public class PlayerSkill : MainSkillManager
             }
         }
         return transform.position;
+    }
+
+    IEnumerator SkillAtk()
+    {
+        yield return new WaitForSeconds(1f);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(skills[playerTrans.playermode - 1].transform.position, skillStat[playerTrans.playermode - 1].attackRadius);
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Monster") && !collider.GetComponent<MonsterAtk>().isDead)
+            {
+                collider.GetComponent<MonsterEvent>().Damaged(collider.GetComponent<MonsterEvent>().currenthp, skillStat[playerTrans.playermode - 1].damage);
+            }
+        }
     }
 
 }

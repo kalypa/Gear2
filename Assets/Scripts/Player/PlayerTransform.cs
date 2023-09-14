@@ -52,7 +52,7 @@ public class PlayerTransform : SkillManager
         {
             if (playermode == 1)
             {
-                ChangeForm("NormalToWhite_Translate", "NormalToWhite", toWhiteButton, whiteToNormalButton, mainSkillSprite[0], 3, 3, 0);
+                ChangeForm("NormalToWhite_Translate", "NormalToWhite", toWhiteButton, whiteToNormalButton, mainSkillSprite[2], 3, 3, 0);
             }
             else if (playermode == 2)
             {
@@ -99,7 +99,7 @@ public class PlayerTransform : SkillManager
     IEnumerator TransformAtk(int index)
     {
         yield return new WaitForSeconds(2f);
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 3);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, skillStats[index].attackRadius);
 
         foreach (Collider2D collider in colliders)
         {

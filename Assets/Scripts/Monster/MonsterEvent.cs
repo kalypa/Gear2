@@ -16,9 +16,6 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     private MonsterMove move;
     private MonsterAtk atk;
     private MeshRenderer meshRenderer;
-    [SerializeField] private Transform canvas;
-    private DamageText damageText;
-    [SerializeField] private GameObject damageTextPrefab;
     void Start()
     {
         animator = GetComponent<SkeletonAnimation>();
@@ -28,7 +25,6 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         atk = GetComponent<MonsterAtk>();
         meshRenderer = GetComponent<MeshRenderer>();
         healthBar.SetHealth(currenthp, maxHp);
-        damageText = damageTextPrefab.GetComponent<DamageText>();
     }
 
     public void Damaged(int hp, int damage)
@@ -43,10 +39,10 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     void ShowDamageText(int damage)
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 spawnPos = screenPos + new Vector3(0, 110f, 0);
-        GameObject damageTextObject = Instantiate(damageTextPrefab, spawnPos, Quaternion.identity);
-        damageTextObject.transform.SetParent(canvas);
-        damageText.SetText(damage.ToString());
+        Vector3 spawnPos = screenPos + new Vector3(0, 80f, 0);
+        var damageTextObject = PoolManager.Instance.GetFromPool<DamageText>(4);
+        damageTextObject.GetComponent<RectTransform>().anchoredPosition = spawnPos;
+        damageTextObject.SetText(damage.ToString());
     }
     public void Healed(int hp, int heal) { }
     public void Dead()
@@ -84,6 +80,7 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         if(move != null) move.isDead = false;
         if (GameManager.Inst.monsterStats[GameManager.Inst.currentStage] != null)
             currenthp = GameManager.Inst.monsterStats[GameManager.Inst.currentStage].maxHp;
+        if(animator != null) animator.AnimationState.SetAnimation(0, "Run", true);
         if (healthBar != null) healthBar.SetHealth(currenthp, maxHp);
     }
 }

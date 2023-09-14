@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MainSkillManager : MonoBehaviour
 {
-    protected bool isUseSkill = true;
+    public bool isUseSkill = true;
     public void UseSkill(TextMeshProUGUI skillCoolTimeText, Image skillFillAmount, SkillStat skillStat)
     {
         if (isUseSkill)
@@ -14,7 +14,6 @@ public class MainSkillManager : MonoBehaviour
             isUseSkill = false;
             skillCoolTimeText.text = "";
             skillFillAmount.fillAmount = 1;
-
             StartCoroutine(SkillCoroutine(skillCoolTimeText, skillFillAmount, skillStat));
         }
     }

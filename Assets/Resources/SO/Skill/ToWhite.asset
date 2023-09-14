@@ -17,3 +17,4 @@ MonoBehaviour:
   costMana: 40
   coolTime: 8
   damage: 10
+  attackRadius: 2
