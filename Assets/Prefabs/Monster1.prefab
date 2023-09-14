@@ -162,7 +162,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -439,6 +439,8 @@ MonoBehaviour:
   currenthp: 0
   maxHp: 0
   healthBar: {fileID: 8393507800485147242}
+  canvas: {fileID: 2500903735928240204}
+  damageTextPrefab: {fileID: 5943574025288075844, guid: f99eb9d7ebb2cc6489323a6df03c77d9, type: 3}
 --- !u!61 &2638191316181439498
 BoxCollider2D:
   m_ObjectHideFlags: 0

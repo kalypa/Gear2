@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using static UnityEngine.GraphicsBuffer;
 
 public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
 {
@@ -17,6 +16,9 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     private MonsterMove move;
     private MonsterAtk atk;
     private MeshRenderer meshRenderer;
+    [SerializeField] private Transform canvas;
+    private DamageText damageText;
+    [SerializeField] private GameObject damageTextPrefab;
     void Start()
     {
         animator = GetComponent<SkeletonAnimation>();
@@ -26,6 +28,7 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         atk = GetComponent<MonsterAtk>();
         meshRenderer = GetComponent<MeshRenderer>();
         healthBar.SetHealth(currenthp, maxHp);
+        damageText = damageTextPrefab.GetComponent<DamageText>();
     }
 
     public void Damaged(int hp, int damage)
@@ -33,7 +36,17 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         currenthp = hp - damage;
         if (!healthBar.gameObject.activeSelf) healthBar.gameObject.SetActive(true);
         healthBar.SetHealth(currenthp, maxHp);
+        ShowDamageText(damage);
         if (currenthp <= 0) Dead();
+    }
+
+    void ShowDamageText(int damage)
+    {
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 spawnPos = screenPos + new Vector3(0, 110f, 0);
+        GameObject damageTextObject = Instantiate(damageTextPrefab, spawnPos, Quaternion.identity);
+        damageTextObject.transform.SetParent(canvas);
+        damageText.SetText(damage.ToString());
     }
     public void Healed(int hp, int heal) { }
     public void Dead()
@@ -69,8 +82,8 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         if(deadEffect != null) deadEffect.gameObject.SetActive(false);
         if(atk != null) atk.isDead = false;
         if(move != null) move.isDead = false;
-        if(healthBar != null) healthBar.SetHealth(currenthp, maxHp);
-        if(GameManager.Inst.monsterStats[GameManager.Inst.currentStage] != null) 
-            currenthp = GameManager.Inst.monsterStats[GameManager.Inst.currentStage].hp;
+        if (GameManager.Inst.monsterStats[GameManager.Inst.currentStage] != null)
+            currenthp = GameManager.Inst.monsterStats[GameManager.Inst.currentStage].maxHp;
+        if (healthBar != null) healthBar.SetHealth(currenthp, maxHp);
     }
 }

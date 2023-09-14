@@ -8,19 +8,41 @@ public class PlayerEvent : MonoBehaviour, StatEvent
 {
     public ParticleSystem deadEffect;
     public PlayerHealthBar healthBar;
+    public PlayerManaBar manaBar;
     public int currenthp;
     public int maxHp;
+    public float maxMp;
+    [SerializeField] private Transform canvas;
+    private DamageText damageText;
+    [SerializeField] private GameObject damageTextPrefab;
     private void Start()
     {
         maxHp = GameManager.Inst.playerStat.maxHp;
+        maxMp = GameManager.Inst.playerStat.maxMp;
         GameManager.Inst.playerStat.hp = maxHp;
+        GameManager.Inst.playerStat.mp = maxMp;
         healthBar.SetHealth(maxHp, maxHp);
+        damageText = damageTextPrefab.GetComponent<DamageText>();
     }
     public void Damaged(int hp, int damage)
     {
         GameManager.Inst.playerStat.hp = hp - damage;
         healthBar.SetHealth(GameManager.Inst.playerStat.hp, maxHp);
+        ShowDamageText(damage);
         if (hp <= 0) Dead();
+    }
+    public void UseMana(float mana, float used)
+    {
+        GameManager.Inst.playerStat.mp = mana - used;
+        manaBar.SetMana(GameManager.Inst.playerStat.mp, maxMp);
+    }
+    void ShowDamageText(int damage)
+    {
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 spawnPos = screenPos + new Vector3(0, 80f, 0);
+        GameObject damageTextObject = Instantiate(damageTextPrefab, spawnPos, Quaternion.identity);
+        damageTextObject.transform.SetParent(canvas);
+        damageText.SetText(damage.ToString());
     }
     public void Healed(int hp, int heal) { }
     public void Dead()
@@ -28,13 +50,4 @@ public class PlayerEvent : MonoBehaviour, StatEvent
         //Invoke("DeadEffect", 1f);
     }
 
-    void DeadEffect()
-    {
-        deadEffect.gameObject.SetActive(true);
-        if (!deadEffect.isPlaying)
-        {
-            PoolManager.Instance.TakeToPool<MonsterEvent>(name, this);
-            GameManager.Inst.monsterCount -= 1;
-        }
-    }
 }

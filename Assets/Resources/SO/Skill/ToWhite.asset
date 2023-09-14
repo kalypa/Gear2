@@ -9,17 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d79e6789fc4f7a479940647dc40a148, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: 89f90b6977dcbdc4ca45612ecbe0dfae, type: 3}
+  m_Name: ToWhite
   m_EditorClassIdentifier: 
   level: 1
-  atk: 4
-  maxHp: 100
-  hp: 100
-  mp: 30
-  maxXp: 0
-  xp: 0
-  atkSpeed: 1
-  criticalProbability: 0
-  criticalDamageAmount: 0
-  selfhealing: 0
+  maxLevel: 10
+  costMana: 40
+  coolTime: 8
+  damage: 10

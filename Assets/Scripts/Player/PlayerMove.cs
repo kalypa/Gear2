@@ -20,15 +20,18 @@ public class PlayerMove : MoveModule<Animator>
 
     public override void Move()
     {
-        float horizontal = variableJoystick.Horizontal;
-        float vertical = variableJoystick.Vertical;
+        if (!GameManager.Inst.playerTransform.isTransform)
+        {
+            float horizontal = variableJoystick.Horizontal;
+            float vertical = variableJoystick.Vertical;
 
-        Vector3 moveDirection = new Vector3(horizontal, vertical).normalized;
-        Vector3 newPosition = transform.position + moveDirection * moveSpeed * Time.fixedDeltaTime;
-        rigidBody.MovePosition(newPosition);
-        Flip(horizontal);
-        if (horizontal == 0 && vertical == 0) FindClosestEnemy();
-        else RunAnim(horizontal, vertical);
+            Vector3 moveDirection = new Vector3(horizontal, vertical).normalized;
+            Vector3 newPosition = transform.position + moveDirection * moveSpeed * Time.fixedDeltaTime;
+            rigidBody.MovePosition(newPosition);
+            Flip(horizontal);
+            if (horizontal == 0 && vertical == 0) FindClosestEnemy();
+            else RunAnim(horizontal, vertical);
+        }
     }
 
     public override void Flip(float horizontal)
