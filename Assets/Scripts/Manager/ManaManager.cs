@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class ManaManager : MonoBehaviour
 {
-    public Text[] scarceTexts = new Text[4];
-    public TextMeshProUGUI[] coolTimeText = new TextMeshProUGUI[4];
-    public Image[] skillFillAmounts = new Image[4];
-    public SkillStat[] skillStats = new SkillStat[4];
+    public Text[] scarceTexts = new Text[5];
+    public TextMeshProUGUI[] coolTimeText = new TextMeshProUGUI[5];
+    public Image[] skillFillAmounts = new Image[5];
+    public SkillStat[] skillStats = new SkillStat[5];
     private void Update()
     {
         ScarceMana();
+        MainScareMana();
     }
     void ScarceMana()
     {
@@ -30,6 +31,22 @@ public class ManaManager : MonoBehaviour
                 scarceTexts[i].text = "";
                 coolTimeText[i].enabled = true;
             }
+        }
+    }
+
+    void MainScareMana()
+    {
+        if (skillStats[4].costMana > GameManager.Inst.playerStat.mp)
+        {
+            skillFillAmounts[4].fillAmount = 1;
+            scarceTexts[4].text = "마나 부족";
+            coolTimeText[4].enabled = false;
+        }
+        else
+        {
+            skillFillAmounts[4].fillAmount = 0;
+            scarceTexts[4].text = "";
+            coolTimeText[4].enabled = true;
         }
     }
 }

@@ -20,8 +20,7 @@ public class PlayerTransform : SkillManager
     [SerializeField] private SkillStat[] skillStats = new SkillStat[4];
     private PlayerEvent player;
     private Animator animator;
-
-    private int playermode = 1;
+    public int playermode = 1;
 
     public bool isTransform = false;
     private void Start()

@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class SkillManager : MonoBehaviour
 {
-    protected bool isUseSkill = true;
-
+    public bool isUseSkill = true;
     public void UseSkill(TextMeshProUGUI skillCoolTimeText, Image skillFillAmount, TextMeshProUGUI skillCoolTimeText2, Image skillFillAmount2, SkillStat skillStat)
     {
         if (isUseSkill)
