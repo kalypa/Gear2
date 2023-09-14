@@ -22,7 +22,7 @@ public class DamageText : MonoBehaviour, IPoolObject
     {
         if(!isPlayer)
         {
-            DamageTween(780, 3);
+            DamageTween(78, 3);
         }
         else
         {
