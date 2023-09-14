@@ -36,8 +36,8 @@ public class PlayerEvent : MonoBehaviour, StatEvent
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 spawnPos = screenPos + new Vector3(0, 80f, 0);
-        var damageTextObject = PoolManager.Instance.GetFromPool<DamageText>(3);
-        damageTextObject.GetComponent<RectTransform>().anchoredPosition = spawnPos;
+        var damageTextObject = PoolManager.Instance.GetFromPool<DamageText>(4);
+        damageTextObject.transform.position = spawnPos;
         damageTextObject.SetText(damage.ToString());
     }
     public void Healed(int hp, int heal) { }

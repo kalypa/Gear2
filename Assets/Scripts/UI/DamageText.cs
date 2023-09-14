@@ -13,19 +13,29 @@ public class DamageText : MonoBehaviour, IPoolObject
     public float jumpHeight = 30.0f;
     public float jumpDuration = 1.0f;
     private RectTransform rectTransform;
-
+    public bool isPlayer;
     void Update()
     {
         TextEffect();
     }
     void TextEffect()
     {
-
+        if(!isPlayer)
+        {
+            DamageTween(780, 3);
+        }
+        else
+        {
+            DamageTween(900, 4);
+        }
+    }
+    void DamageTween(float x, int index)
+    {
         rectTransform = GetComponent<RectTransform>();
 
-        rectTransform.DOJump(new Vector3(700, rectTransform.anchoredPosition.y+500 + jumpHeight, 0), 1, 1, jumpDuration)
+        rectTransform.DOJump(new Vector3(x, rectTransform.anchoredPosition.y + 500 + jumpHeight, 0), 1, 1, jumpDuration)
             .SetEase(Ease.OutQuad)
-            .OnComplete(() => Destroy(gameObject));
+            .OnComplete(() => PoolManager.Instance.TakeToPool(index, this));
     }
     public void SetText(string dmgText)
     {

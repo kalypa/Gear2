@@ -149,5 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 9018196076050661142}
-  floatSpeed: 20
-  duration: 1
+  jumpHeight: 30
+  jumpDuration: 1
+  isPlayer: 1

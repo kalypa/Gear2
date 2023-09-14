@@ -39,9 +39,9 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     void ShowDamageText(int damage)
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 spawnPos = screenPos + new Vector3(0, 80f, 0);
-        var damageTextObject = PoolManager.Instance.GetFromPool<DamageText>(4);
-        damageTextObject.GetComponent<RectTransform>().anchoredPosition = spawnPos;
+        Vector3 spawnPos = screenPos + new Vector3(0, 100f, 0);
+        var damageTextObject = PoolManager.Instance.GetFromPool<DamageText>(3);
+        damageTextObject.transform.position = spawnPos;
         damageTextObject.SetText(damage.ToString());
     }
     public void Healed(int hp, int heal) { }
@@ -80,7 +80,7 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         if(move != null) move.isDead = false;
         if (GameManager.Inst.monsterStats[GameManager.Inst.currentStage] != null)
             currenthp = GameManager.Inst.monsterStats[GameManager.Inst.currentStage].maxHp;
-        if(animator != null) animator.AnimationState.SetAnimation(0, "Run", true);
+        if(animator != null) animator.AnimationState.SetAnimation(0, "Walk", true);
         if (healthBar != null) healthBar.SetHealth(currenthp, maxHp);
     }
 }
