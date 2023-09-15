@@ -15,6 +15,6 @@ MonoBehaviour:
   level: 1
   maxLevel: 10
   costMana: 40
-  coolTime: 8
+  coolTime: 13
   damage: 10
   attackRadius: 2

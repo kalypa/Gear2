@@ -18,8 +18,9 @@ public class DamageText : MonoBehaviour, IPoolObject
     float randomValuePlayer;
     private void Start()
     {
-        randomValueMonster = (Random.Range(0, 2) == 0) ? 780 : 980;
-        randomValuePlayer = (Random.Range(0, 2) == 0) ? 900 : 980;
+        rectTransform = GetComponent<RectTransform>();
+        randomValueMonster = (Random.Range(0, 2) == 0) ? 10 : -10;
+        randomValuePlayer = (Random.Range(0, 2) == 0) ? 5 : -5;
     }
     void Update()
     {
@@ -38,10 +39,7 @@ public class DamageText : MonoBehaviour, IPoolObject
     }
     void DamageTween(float x, int index)
     {
-        rectTransform = GetComponent<RectTransform>();
-
-        rectTransform.DOJump(new Vector3(x, rectTransform.anchoredPosition.y + 500 + jumpHeight, 0), 1, 1, jumpDuration)
-            .SetEase(Ease.OutQuad)
+        rectTransform.DOJump(rectTransform.position + new Vector3(x, -15f, 0f), 0.5f, 1, 0.7f)
             .OnComplete(() => PoolManager.Instance.TakeToPool(index, this));
     }
     public void SetText(string dmgText)

@@ -23,6 +23,7 @@ public class PlayerTransform : SkillManager
     public int playermode = 1;
     public Animator darkEffect;
     public bool isTransform = false;
+    public bool isAuto = false;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -45,7 +46,36 @@ public class PlayerTransform : SkillManager
             }
         }
     }
-
+    private void Update()
+    {
+        AutoSkill();
+    }
+    void AutoSkill()
+    {
+        if(isAuto && isUseSkill)
+        {
+            if (isUsed)
+            {
+                if (playermode == 1)
+                {
+                    ChangeForm("NormalToDark_Translate", "NormalToDark", toDarkButton, darkToNormalButton, mainSkillSprite[1], 2, 2, 1);
+                    isUsed = false;
+                }
+                else if (playermode == 2)
+                {
+                    ChangeForm("DarkToWhite_Translate", "DarkToWhite", toWhiteButton, whiteToNormalButton, mainSkillSprite[2], 3, 3, 0);
+                    isUsed = false;
+                    darkToNormalButton.SetActive(false);
+                    toDarkButton.SetActive(true);
+                }
+                else if (playermode == 3)
+                {
+                    ChangeForm("WhiteToNormal_Translate", "WhiteToNormal", whiteToNormalButton, toWhiteButton, mainSkillSprite[0], 1, 1, 0);
+                    isUsed = false;
+                }
+            }
+        }
+    }
     public void OnClickTransformWhiteButton()
     {
         if (isUseSkill)

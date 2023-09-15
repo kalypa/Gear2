@@ -10,8 +10,6 @@ public class ManaManager : MonoBehaviour
     public TextMeshProUGUI[] coolTimeText = new TextMeshProUGUI[5];
     public Image[] skillFillAmounts = new Image[5];
     public SkillStat[] skillStats = new SkillStat[5];
-    public PlayerSkill skill;
-    public PlayerTransform playerTransform;
     private void Update()
     {
         ScarceMana();
@@ -27,7 +25,7 @@ public class ManaManager : MonoBehaviour
                 scarceTexts[i].text = "마나 부족";
                 coolTimeText[i].enabled = false;
             }
-            else if(skill.isUseSkill && playerTransform.isUseSkill)
+            else if(GameManager.Inst.playerskill.isUseSkill && GameManager.Inst.playerTransform.isUseSkill)
             {
                 if(skillFillAmounts[i].fillAmount == 1) skillFillAmounts[i].fillAmount = 0;
                 scarceTexts[i].text = "";
@@ -44,7 +42,7 @@ public class ManaManager : MonoBehaviour
             scarceTexts[4].text = "마나 부족";
             coolTimeText[4].enabled = false;
         }
-        else if (skill.isUseSkill && playerTransform.isUseSkill)
+        else if (GameManager.Inst.playerskill.isUseSkill && GameManager.Inst.playerTransform.isUseSkill)
         {
             skillFillAmounts[4].fillAmount = 0;
             scarceTexts[4].text = "";

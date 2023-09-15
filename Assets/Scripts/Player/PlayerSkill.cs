@@ -15,28 +15,54 @@ public class PlayerSkill : MainSkillManager
 
     public List<Animator> skillList = new();
     public GameObject[] skills = new GameObject[3];
+    public GameObject[] skillAngle = new GameObject[3];
     private PlayerEvent player;
-    private PlayerTransform playerTrans;
     public bool isSkillAtk = false;
+    public bool isAuto = false;
     private void Start()
     {
         player = GetComponent<PlayerEvent>();
-        playerTrans = GetComponent<PlayerTransform>();
+    }
+    private void Update()
+    {
+        UseSkillAuto();
     }
     public void OnClickMainSkillbutton()
     {
-        if(isUseSkill && IsInAttackRange(skillStat[playerTrans.playermode - 1].attackRadius))
+        SkillAction();
+    }
+    void UseSkillAuto()
+    {
+        if(isAuto && isUseSkill && IsInAttackRange(skillStat[GameManager.Inst.playerTransform.playermode - 1].attackRadius))
         {
-            MainSkill();
+            if(!GameManager.Inst.playerTransform.isUsed && !GameManager.Inst.playerTransform.isTransform)
+            {
+                if (isUsed)
+                {
+                    SkillAction();
+                    isUsed = false;
+                }
+            }
         }
     }
+    void SkillAction()
+    {
+        if (isUseSkill && IsInAttackRange(skillStat[GameManager.Inst.playerTransform.playermode - 1].attackRadius))
+        {
+            if(skillStat[GameManager.Inst.playerTransform.playermode - 1].costMana <= GameManager.Inst.playerStat.mp && !GameManager.Inst.playerTransform.isTransform)
+            {
+                MainSkill();
+            }
+        }
+    }
+
     void MainSkill()
     {
-        if (playerTrans.playermode != 3) skillList[playerTrans.playermode - 1].transform.position = SkillIndex();
+        if (GameManager.Inst.playerTransform.playermode != 3) skillList[GameManager.Inst.playerTransform.playermode - 1].transform.position = SkillIndex();
         else SkillAngle(skillStat[2].attackRadius);
-        skillList[playerTrans.playermode - 1].SetTrigger("Skill");
-        UseSkill(skillCoolTimeText, skillFillAmount, skillStat[playerTrans.playermode - 1]);
-        player.UseMana(GameManager.Inst.playerStat.mp, skillStat[playerTrans.playermode - 1].costMana);
+        skillList[GameManager.Inst.playerTransform.playermode - 1].SetTrigger("Skill");
+        UseSkill(skillCoolTimeText, skillFillAmount, skillStat[GameManager.Inst.playerTransform.playermode - 1]);
+        player.UseMana(GameManager.Inst.playerStat.mp, skillStat[GameManager.Inst.playerTransform.playermode - 1].costMana);
         SkillAtk();
     }
 
@@ -46,7 +72,7 @@ public class PlayerSkill : MainSkillManager
         return true;
     }
 
-    Vector2 SkillIndex() => playerTrans.playermode switch
+    Vector2 SkillIndex() => GameManager.Inst.playerTransform.playermode switch
     {
         1 => transform.position,
         2 => NearMonsterPosition(skillStat[1].attackRadius),
@@ -79,7 +105,7 @@ public class PlayerSkill : MainSkillManager
                 Vector3 direction = collider.transform.position - transform.position;
 
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-               skillList[playerTrans.playermode - 1].transform.parent.eulerAngles = new Vector3(0, 0, angle);
+               skillList[GameManager.Inst.playerTransform.playermode - 1].transform.parent.eulerAngles = new Vector3(0, 0, angle);
             }
         }
     }
@@ -87,16 +113,16 @@ public class PlayerSkill : MainSkillManager
     void SkillAtk()
     {
         isSkillAtk = true;
-        BoxCollider2D myCollider = skills[playerTrans.playermode - 1].GetComponent<BoxCollider2D>();
+        BoxCollider2D myCollider = skills[GameManager.Inst.playerTransform.playermode - 1].GetComponent<BoxCollider2D>();
 
         Vector2 overlapBoxSize = myCollider.bounds.size;
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(skills[playerTrans.playermode - 1].transform.position, overlapBoxSize, 0f);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(skills[GameManager.Inst.playerTransform.playermode - 1].transform.position, overlapBoxSize, skillAngle[GameManager.Inst.playerTransform.playermode - 1].transform.eulerAngles.z);
 
         foreach (Collider2D collider in colliders)
         {
             if (collider.CompareTag("Monster") && !collider.GetComponent<MonsterAtk>().isDead)
             {
-                collider.GetComponent<MonsterEvent>().Damaged(collider.GetComponent<MonsterEvent>().currenthp, skillStat[playerTrans.playermode - 1].damage);
+                collider.GetComponent<MonsterEvent>().Damaged(collider.GetComponent<MonsterEvent>().currenthp, skillStat[GameManager.Inst.playerTransform.playermode - 1].damage);
             }
         }
     }
