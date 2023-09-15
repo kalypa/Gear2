@@ -20,7 +20,7 @@ public class PlayerMove : MoveModule<Animator>
 
     public override void Move()
     {
-        if (!GameManager.Inst.playerTransform.isTransform)
+        if (!GameManager.Inst.playerTransform.isTransform && !GameManager.Inst.playerskill.isSkillAtk)
         {
             float horizontal = variableJoystick.Horizontal;
             float vertical = variableJoystick.Vertical;
@@ -49,7 +49,7 @@ public class PlayerMove : MoveModule<Animator>
 
     void FindClosestEnemy()
     {
-        if(!GameManager.Inst.playerTransform.isTransform)
+        if(!GameManager.Inst.playerTransform.isTransform && !GameManager.Inst.playerskill.isSkillAtk)
         {
             if (!isChased)
             {
@@ -62,15 +62,18 @@ public class PlayerMove : MoveModule<Animator>
 
             foreach (GameObject enemy in enemies)
             {
-                float distance = Vector3.Distance(transform.position, enemy.transform.position);
-                if (distance < closestDistance)
+                if(!enemy.GetComponent<MonsterAtk>().isDead)
                 {
-                    closestDistance = distance;
-                    closestEnemy = enemy.transform;
+                    float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        closestEnemy = enemy.transform;
+                    }
                 }
             }
             target = closestEnemy;
-            Vector3 targetDirection = (closestEnemy.position - transform.position).normalized;
+            Vector3 targetDirection = (target.position - transform.position).normalized;
             if (!isAtk) transform.position += targetDirection * moveSpeed * Time.deltaTime;
             Flip(targetDirection.x);
             FindEnemy();
@@ -83,10 +86,10 @@ public class PlayerMove : MoveModule<Animator>
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag("Monster"))
+            if (collider.CompareTag("Monster") && !collider.GetComponent<MonsterAtk>().isDead)
             {
                 GetComponent<PlayerAtk>().Attack();
-                isAtk = true;
+                if(!collider.GetComponent<MonsterAtk>().isDead) isAtk = true;
             }
         }
     }

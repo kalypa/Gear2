@@ -8,7 +8,8 @@ using DG.Tweening;
 
 public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
 {
-    public ParticleSystem deadEffect;
+    public Animator damageEffect;
+    public Animator deadEffect;
     private SkeletonAnimation animator;
     public int currenthp;
     public int maxHp;
@@ -33,6 +34,7 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         if (!healthBar.gameObject.activeSelf) healthBar.gameObject.SetActive(true);
         healthBar.SetHealth(currenthp, maxHp);
         ShowDamageText(damage);
+        damageEffect.SetTrigger("Damaged");
         if (currenthp <= 0) Dead();
     }
 
@@ -55,6 +57,7 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
             move.isDead = true;
             healthBar.gameObject.SetActive(false);
             animator.AnimationState.SetAnimation(0, "Dead", false);
+            inst.playermove.isAtk = false;
             Invoke("DeadEffect", 1f);
         }
     }
@@ -62,7 +65,7 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     void DeadEffect()
     {
         meshRenderer.enabled = false;
-        deadEffect.gameObject.SetActive(true);
+        deadEffect.SetTrigger("Dead");
         Invoke("ResetMonster", 1f);
     }
     void ResetMonster()
@@ -75,7 +78,6 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
     public void OnGettingFromPool()
     {
         if(meshRenderer != null) meshRenderer.enabled = true;
-        if(deadEffect != null) deadEffect.gameObject.SetActive(false);
         if(atk != null) atk.isDead = false;
         if(move != null) move.isDead = false;
         if (GameManager.Inst.monsterStats[GameManager.Inst.currentStage] != null)

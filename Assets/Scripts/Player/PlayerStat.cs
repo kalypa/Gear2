@@ -15,4 +15,7 @@ public class PlayerStat : ScriptableObject
     public int maxXp;
     public int xp;
     public float atkSpeed;
+    public int whitePassiveAtk;
+    public int darkPassiveAtk;
+    public int normalPassiveAtk;
 }

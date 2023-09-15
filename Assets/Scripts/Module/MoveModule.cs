@@ -7,7 +7,7 @@ public abstract class MoveModule<T> : MonoBehaviour
     public float MoveSpeed;
     protected float moveSpeed { get => MoveSpeed; set => MoveSpeed = value; }
     protected bool isChased = false;
-    protected bool isAtk = false;
+    public bool isAtk = false;
     protected Transform target;
     protected Rigidbody2D rigidBody;
     protected T animator;

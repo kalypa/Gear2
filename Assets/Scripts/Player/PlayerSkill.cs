@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,11 +13,11 @@ public class PlayerSkill : MainSkillManager
     [SerializeField] private Text scarceText;
     [SerializeField] private SkillStat[] skillStat = new SkillStat[3];
 
-    public List<GameObject> skillList = new();
+    public List<Animator> skillList = new();
     public GameObject[] skills = new GameObject[3];
     private PlayerEvent player;
     private PlayerTransform playerTrans;
-
+    public bool isSkillAtk = false;
     private void Start()
     {
         player = GetComponent<PlayerEvent>();
@@ -31,23 +32,18 @@ public class PlayerSkill : MainSkillManager
     }
     void MainSkill()
     {
-        skillList[playerTrans.playermode - 1].transform.position = SkillIndex();
-        skillList[playerTrans.playermode - 1].gameObject.SetActive(true);
+        if (playerTrans.playermode != 3) skillList[playerTrans.playermode - 1].transform.position = SkillIndex();
+        else SkillAngle(skillStat[2].attackRadius);
+        skillList[playerTrans.playermode - 1].SetTrigger("Skill");
         UseSkill(skillCoolTimeText, skillFillAmount, skillStat[playerTrans.playermode - 1]);
         player.UseMana(GameManager.Inst.playerStat.mp, skillStat[playerTrans.playermode - 1].costMana);
-        StartCoroutine(SkillAtk());
-        Invoke("EndAtk", 2f);
+        SkillAtk();
     }
 
     bool IsInAttackRange(float radius)
     {
         if (NearMonsterPosition(radius).x == transform.position.x && NearMonsterPosition(radius).y == transform.position.y) return false;
         return true;
-    }
-
-    void EndAtk()
-    {
-        skillList[playerTrans.playermode - 1].gameObject.SetActive(false);
     }
 
     Vector2 SkillIndex() => playerTrans.playermode switch
@@ -72,10 +68,29 @@ public class PlayerSkill : MainSkillManager
         return transform.position;
     }
 
-    IEnumerator SkillAtk()
+    void SkillAngle(float radius)
     {
-        yield return new WaitForSeconds(1f);
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(skills[playerTrans.playermode - 1].transform.position, skillStat[playerTrans.playermode - 1].attackRadius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Monster") && !collider.GetComponent<MonsterAtk>().isDead)
+            {
+                Vector3 direction = collider.transform.position - transform.position;
+
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+               skillList[playerTrans.playermode - 1].transform.parent.eulerAngles = new Vector3(0, 0, angle);
+            }
+        }
+    }
+
+    void SkillAtk()
+    {
+        isSkillAtk = true;
+        BoxCollider2D myCollider = skills[playerTrans.playermode - 1].GetComponent<BoxCollider2D>();
+
+        Vector2 overlapBoxSize = myCollider.bounds.size;
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(skills[playerTrans.playermode - 1].transform.position, overlapBoxSize, 0f);
 
         foreach (Collider2D collider in colliders)
         {

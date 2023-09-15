@@ -10,4 +10,6 @@ public class GameManager : MonoSingleton<GameManager>
     public MonsterStat[] monsterStats;
     public MonsterStat bossStats;
     public PlayerTransform playerTransform;
+    public PlayerMove playermove;
+    public PlayerSkill playerskill;
 }

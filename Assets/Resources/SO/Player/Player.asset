@@ -15,10 +15,13 @@ MonoBehaviour:
   level: 1
   atk: 4
   maxHp: 100
-  hp: 100
+  hp: 84
   mp: 300
   maxMp: 300
   mpSpeed: 1
   maxXp: 0
   xp: 0
   atkSpeed: 1
+  whitePassiveAtk: 8
+  darkPassiveAtk: 2
+  normalPassiveAtk: 4

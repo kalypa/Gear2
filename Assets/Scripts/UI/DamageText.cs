@@ -14,6 +14,13 @@ public class DamageText : MonoBehaviour, IPoolObject
     public float jumpDuration = 1.0f;
     private RectTransform rectTransform;
     public bool isPlayer;
+    float randomValueMonster;
+    float randomValuePlayer;
+    private void Start()
+    {
+        randomValueMonster = (Random.Range(0, 2) == 0) ? 780 : 980;
+        randomValuePlayer = (Random.Range(0, 2) == 0) ? 900 : 980;
+    }
     void Update()
     {
         TextEffect();
@@ -22,11 +29,11 @@ public class DamageText : MonoBehaviour, IPoolObject
     {
         if(!isPlayer)
         {
-            DamageTween(78, 3);
+            DamageTween(randomValueMonster, 3);
         }
         else
         {
-            DamageTween(900, 4);
+            DamageTween(randomValuePlayer, 4);
         }
     }
     void DamageTween(float x, int index)

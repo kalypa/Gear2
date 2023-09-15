@@ -21,7 +21,7 @@ public class PlayerTransform : SkillManager
     private PlayerEvent player;
     private Animator animator;
     public int playermode = 1;
-
+    public Animator darkEffect;
     public bool isTransform = false;
     private void Start()
     {
@@ -83,6 +83,7 @@ public class PlayerTransform : SkillManager
     {
         if (skillStats[index].costMana <= GameManager.Inst.playerStat.mp)
         {
+            darkEffect.SetBool("Atk", false);
             player.UseMana(GameManager.Inst.playerStat.mp, skillStats[index].costMana);
             isTransform = true;
             animator.Play(animationName);
@@ -99,8 +100,8 @@ public class PlayerTransform : SkillManager
     IEnumerator TransformAtk(int index)
     {
         yield return new WaitForSeconds(2f);
+        if(playermode == 2) darkEffect.SetBool("Atk", true);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, skillStats[index].attackRadius);
-
         foreach (Collider2D collider in colliders)
         {
             if (collider.CompareTag("Monster") && !collider.GetComponent<MonsterAtk>().isDead)
