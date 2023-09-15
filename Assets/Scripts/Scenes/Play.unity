@@ -2431,6 +2431,7 @@ GameObject:
   - component: {fileID: 332995463}
   - component: {fileID: 332995462}
   - component: {fileID: 332995461}
+  - component: {fileID: 332995466}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2551,6 +2552,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332995466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332995460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a34449497caba479b8f69ef6a70cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isShaking: 0
 --- !u!1 &337820531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2676,7 +2690,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 332995464}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -10059,8 +10073,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dd5b530f7eb93e8468976cd241a1a0fb, type: 2}
   - {fileID: 11400000, guid: a3400b22f657ca9448eb9e3fc3866a80, type: 2}
   - {fileID: 11400000, guid: 38fef74d5693ba24eaad7b761d662234, type: 2}
-  skill: {fileID: 1385921228}
-  playerTransform: {fileID: 1385921226}
 --- !u!4 &1832985997
 Transform:
   m_ObjectHideFlags: 0

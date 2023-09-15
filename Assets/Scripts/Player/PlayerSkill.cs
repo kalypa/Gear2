@@ -58,6 +58,7 @@ public class PlayerSkill : MainSkillManager
 
     void MainSkill()
     {
+        ShakeCamera.Inst.Shake();
         if (GameManager.Inst.playerTransform.playermode != 3) skillList[GameManager.Inst.playerTransform.playermode - 1].transform.position = SkillIndex();
         else SkillAngle(skillStat[2].attackRadius);
         skillList[GameManager.Inst.playerTransform.playermode - 1].SetTrigger("Skill");

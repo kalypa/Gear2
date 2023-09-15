@@ -9,7 +9,7 @@ public class CameraMove : MonoBehaviour
 
     void LateUpdate()
     {
-        if (target != null)
+        if (target != null && !GetComponent<ShakeCamera>().isShaking)
         {
             Vector3 desiredPosition = target.position;
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);

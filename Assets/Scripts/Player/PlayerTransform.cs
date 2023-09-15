@@ -130,7 +130,8 @@ public class PlayerTransform : SkillManager
     IEnumerator TransformAtk(int index)
     {
         yield return new WaitForSeconds(2f);
-        if(playermode == 2) darkEffect.SetBool("Atk", true);
+        ShakeCamera.Inst.Shake();
+        if (playermode == 2) darkEffect.SetBool("Atk", true);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, skillStats[index].attackRadius);
         foreach (Collider2D collider in colliders)
         {
