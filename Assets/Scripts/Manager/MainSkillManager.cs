@@ -8,7 +8,7 @@ public class MainSkillManager : MonoBehaviour
 {
     public bool isUseSkill = true;
     public bool isUsed = true;
-    public void UseSkill(TextMeshProUGUI skillCoolTimeText, Image skillFillAmount, SkillStat skillStat)
+    public void UseSkill(TextMeshProUGUI skillCoolTimeText, Image skillFillAmount, SkillStat skillStat) //스킬 사용
     {
         if (isUseSkill)
         {
@@ -18,7 +18,7 @@ public class MainSkillManager : MonoBehaviour
             StartCoroutine(SkillCoroutine(skillCoolTimeText, skillFillAmount, skillStat));
         }
     }
-    IEnumerator SkillCoroutine(TextMeshProUGUI skillCoolTimeText, Image skillFillAmount, SkillStat skillStat)
+    IEnumerator SkillCoroutine(TextMeshProUGUI skillCoolTimeText, Image skillFillAmount, SkillStat skillStat) //스킬 쿨타임 이미지 활성화
     {
         StartCoroutine(CoolTimeCountCoroutine(skillStat.coolTime, skillCoolTimeText, skillFillAmount));
         while (skillFillAmount.fillAmount > 0)
@@ -27,7 +27,7 @@ public class MainSkillManager : MonoBehaviour
             yield return null;
         }
     }
-    IEnumerator CoolTimeCountCoroutine(float number, TextMeshProUGUI skillCoolTimeText, Image skillFillAmount)
+    IEnumerator CoolTimeCountCoroutine(float number, TextMeshProUGUI skillCoolTimeText, Image skillFillAmount) //스킬 쿨타임 텍스트 활성화
     {
         if (number > 0)
         {

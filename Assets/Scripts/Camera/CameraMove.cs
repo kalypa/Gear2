@@ -9,6 +9,11 @@ public class CameraMove : MonoBehaviour
 
     void LateUpdate()
     {
+        MoveCamera();
+    }
+
+    void MoveCamera() //플레이어 따라서 카메라 이동
+    {
         if (target != null && !GetComponent<ShakeCamera>().isShaking)
         {
             Vector3 desiredPosition = target.position;

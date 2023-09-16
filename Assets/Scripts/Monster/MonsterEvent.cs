@@ -78,9 +78,9 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         PoolManager.Instance.TakeToPool(GameManager.Inst.currentStage, this);
         GameManager.Inst.monsterCount -= 1;
     }
-    public void OnCreatedInPool() { }
+    public void OnCreatedInPool() { } //풀매니저가 생성할 때 
 
-    public void OnGettingFromPool() //풀매니저에서 꺼내올 때 초기화작업
+    public void OnGettingFromPool() //풀매니저에서 꺼내올 때 초기화 작업
     {
         if(meshRenderer != null) meshRenderer.enabled = true;
         if(atk != null) atk.isDead = false;

@@ -11,10 +11,7 @@ public class GoldManager : MonoSingleton<GoldManager>
     public GameObject goldText;
     public TextMeshProUGUI text;
     public Money gold;
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+    private void Awake() => DontDestroyOnLoad(gameObject);
     private void Start()
     {
         gold = new Money();
@@ -22,14 +19,16 @@ public class GoldManager : MonoSingleton<GoldManager>
         GoldText(gold);
     }
 
-    void GoldText(Money money)
+    void GoldText(Money money) //골드 텍스트 설정
     {
         text.text = money.GetMoney();
     }
 
-    private void Update()
+    private void Update() => SettingGold();
+
+    void SettingGold() //골드 세팅
     {
-        if(goldText == null) goldText = GameObject.Find("GoldAmountText");
+        if (goldText == null) goldText = GameObject.Find("GoldAmountText");
         if (text == null) text = goldText.GetComponent<TextMeshProUGUI>();
         GoldText(gold);
     }

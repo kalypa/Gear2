@@ -12,7 +12,7 @@ public class WhitePassive : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    public void Move()
+    public void Move() // 검기 이동
     {
         transform.localPosition = new Vector2(0, 0.5f);
         isMove = true;
@@ -22,11 +22,8 @@ public class WhitePassive : MonoBehaviour
             .OnComplete(()=> isMove = false);
         DOTween.Kill(tween);
     }
-    private void Update()
-    {
-        CollisionCheck();
-    }
-    void CollisionCheck()
+    private void Update() => CollisionCheck();
+    void CollisionCheck() //검기와 적이 충돌했는지 체크하고 충돌했다면 데미지 주기
     {
         if(isMove)
         {

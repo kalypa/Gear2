@@ -31,7 +31,7 @@ public class PlayerTransform : SkillManager
         player = GetComponent<PlayerEvent>();
     }
 
-    public void OnClickTransformDarkButton()
+    public void OnClickTransformDarkButton() //다크 모드 변신 버튼 눌렀을 때
     {
         if(isUseSkill)
         {
@@ -51,7 +51,7 @@ public class PlayerTransform : SkillManager
     {
         AutoSkill();
     }
-    void AutoSkill()
+    void AutoSkill() //자동 변신 스킬 사용
     {
         if(isAuto && isUseSkill)
         {
@@ -77,7 +77,7 @@ public class PlayerTransform : SkillManager
             }
         }
     }
-    public void OnClickTransformWhiteButton()
+    public void OnClickTransformWhiteButton() //화이트 모드 변신 버튼 눌렀을 때
     {
         if (isUseSkill)
         {
@@ -94,7 +94,7 @@ public class PlayerTransform : SkillManager
         }
     }
 
-    public void OnClickTransformWhiteToNormalButton()
+    public void OnClickTransformWhiteToNormalButton() //화이트 모드에서 노말 모드로 변신 버튼 눌렀을 때
     {
         if (isUseSkill)
         {
@@ -102,7 +102,7 @@ public class PlayerTransform : SkillManager
         }
     }
 
-    public void OnClickTransformDarkToNormalButton()
+    public void OnClickTransformDarkToNormalButton() //다크 모드에서 노말 모드로 변신 버튼 눌렀을 때
     {
         if (isUseSkill)
         {
@@ -111,7 +111,7 @@ public class PlayerTransform : SkillManager
     }
 
     void ChangeForm(string animationName, string lightAnimationName, GameObject btn1, GameObject btn2, Sprite mSkill, int index, int skillIndex1, int skillIndex2)
-    {
+    { //변신
         if (skillStats[index].costMana <= GameManager.Inst.playerStat.mp)
         {
             transformSound.Play();
@@ -129,7 +129,7 @@ public class PlayerTransform : SkillManager
             StartCoroutine(TransformAtk(index));
         }
     }
-    IEnumerator TransformAtk(int index)
+    IEnumerator TransformAtk(int index) //변신할 때 주위 적에게 데미지 주기
     {
         yield return new WaitForSeconds(2f);
         ShakeCamera.Inst.Shake();

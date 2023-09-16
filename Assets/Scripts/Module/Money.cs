@@ -22,7 +22,7 @@ public class Money
         money = new int[26];  // A~Z
     }
 
-    static public Money ReturnMoney(int index, int amount)
+    static public Money ReturnMoney(int index, int amount) //µ· ¹ÝÈ¯
     {
         Money money = new Money();
         money.index = index;
@@ -30,12 +30,12 @@ public class Money
         return money;
     }
 
-    public void SetMoney(int[] money)
+    public void SetMoney(int[] money) //µ· ¼¼ÆÃ
     {
         this.money = money;
     }
 
-    public void EarnMoney(Money p_money)
+    public void EarnMoney(Money p_money) //µ· Áõ°¡
     {   // µ· ¹ú±â
         for (int i = 0; i <= p_money.index; i++)
         {
@@ -43,7 +43,7 @@ public class Money
         }
     }
 
-    public void SpendMoney(Money p_money)
+    public void SpendMoney(Money p_money) //µ· °¨¼Ò
     {  // µ· ¾²±â
         for (int i = 0; i <= p_money.index; i++)
         {
@@ -52,8 +52,8 @@ public class Money
         }
     }
 
-    public double getmoney()
-    {   // ÇöÀç µ· Á¤º¸ ¹Þ¾Æ¿À±â
+    public double getmoney() // ÇöÀç µ· Á¤º¸ ¹Þ¾Æ¿À±â
+    {   
         if (index > 0)
         {
             current = money[index] + ((double)money[index - 1] / 1000);
@@ -66,9 +66,9 @@ public class Money
         return current;
     }
 
-    public void update()
+    public void update()// µ·¹ú¾úÀ» ‹š µ· ´ÜÀ§ Á¤¸®
     {
-        // µ·¹ú¾ú±â ÇßÀ»‹š µ· ´ÜÀ§ Á¤¸®
+        
         for (int i = 0; i < 26; i++)
         {
             if (money[i] >= 1000)
@@ -99,8 +99,8 @@ public class Money
         }
     }
 
-    public string GetMoney()
-    {  // ¹®ÀÚ¿­·Î µ·¾×¼ö ¹Þ¾Æ¿À±â.
+    public string GetMoney() // ¹®ÀÚ¿­·Î µ·¾×¼ö ¹Þ¾Æ¿À±â.
+    {
         InitUnit();
         update();
         string s = "";

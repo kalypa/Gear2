@@ -35,7 +35,7 @@ public class DamageText : MonoBehaviour, IPoolObject
     }
     public void SetText(string dmgText) => text.text = dmgText; //텍스트 세팅
 
-    public void OnCreatedInPool() { }
+    public void OnCreatedInPool() { } //풀매니저에서 생성될 때
 
     public void OnGettingFromPool() //풀매니저에서 꺼내올때
     {

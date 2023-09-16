@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     public Image levelUpButton;
     void Update() => CanLevelUp();
 
-    public void OnClickLevelUp()
+    public void OnClickLevelUp() //레벨업 버튼 눌렀을 때
     {
         var stat = GameManager.Inst.playerStat;
         if (stat.xp >= stat.maxXp)
@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void CanLevelUp()
+    void CanLevelUp() //레벨업 가능한지 체크하고 버튼 색상 변경
     {
         var stat = GameManager.Inst.playerStat;
         if (stat.xp > stat.maxXp)

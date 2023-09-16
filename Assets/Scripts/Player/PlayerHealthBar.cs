@@ -8,7 +8,7 @@ public class PlayerHealthBar : MonoBehaviour
     public Image healthImage;
 
     private void Start() => StartCoroutine(HpHealedPerSecond());
-    IEnumerator HpHealedPerSecond()
+    IEnumerator HpHealedPerSecond() //초당 HP 회복
     {
         while (true)
         {
@@ -26,7 +26,7 @@ public class PlayerHealthBar : MonoBehaviour
             }
         }
     }
-    public void SetHealth(float currentHealth, float maxHealth)
+    public void SetHealth(float currentHealth, float maxHealth) //HP 텍스트 세팅 
     {
         healthImage.fillAmount = currentHealth / maxHealth;
     }

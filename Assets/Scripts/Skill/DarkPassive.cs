@@ -7,7 +7,7 @@ public class DarkPassive : MonoBehaviour
     private float damageInterval = 0.5f; 
     private float timeSinceLastDamage = 0f;
     public PlayerTransform playerTransform;
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision) // 다크 패시브 스킬 범위 내에 들어와있다면 
     {
         if(playerTransform.playermode == 2)
         {

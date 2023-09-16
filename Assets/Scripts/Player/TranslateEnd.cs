@@ -6,7 +6,7 @@ public class TranslateEnd : StateMachineBehaviour
 {
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
+    { //애니메이션 끝났을 때 변신 종료
         GameManager.Inst.playerTransform.isTransform = false;
     }
 

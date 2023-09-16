@@ -6,7 +6,9 @@ using UnityEngine;
 public class MPText : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI mpText;
-    void Update()
+    void Update() => SetMpText();
+
+    void SetMpText() //마나 텍스트 세팅
     {
         mpText.text = ((int)GameManager.Inst.playerStat.mp).ToString();
     }

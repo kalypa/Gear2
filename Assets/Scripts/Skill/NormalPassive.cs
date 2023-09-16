@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NormalPassive : MonoBehaviour
 {
-    public void Atk()
+    public void Atk() //더 넓은 범위에 데미지 중첩
     {
         var gm = GameManager.Inst;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 4);

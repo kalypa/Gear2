@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
         StartCoroutine(SpawnMonster(GameManager.Inst.currentStage));
     }
 
-    void StartSpawn()
+    void StartSpawn() //몬스터 생성 20번 반복
     {
         for(int i = 0; i < spawnPos.Count; i++)
         {
@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
         isFirstSpawn = false;
     }
 
-    IEnumerator SpawnMonster(int idx)
+    IEnumerator SpawnMonster(int idx) //몬스터를 랜덤한 위치에 생성
     {
         while (true)
         {

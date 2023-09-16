@@ -5,35 +5,33 @@ using UnityEngine;
 
 public class ShakeCamera : MonoSingleton<ShakeCamera>
 {
-    private Vector3 originalPosition; // 카메라 원래 위치
-    private float shakeDuration = 0f; // 흔들림 지속 시간
-    private float shakeMagnitude = 0.15f; // 흔들림의 크기
+    private Vector3 originalPosition;
+    private float shakeDuration = 0f; 
+    private float shakeMagnitude = 0.15f; 
     public bool isShaking = false;
 
-    private void Update()
+    private void Update() => ShakingCamera();
+
+    public void Shake() //카메라 흔드는 시간 설정
+    {
+        shakeDuration = 0.5f; 
+    }
+
+    void ShakingCamera() //카메라 흔들기
     {
         if (shakeDuration > 0)
         {
             originalPosition = transform.position;
             isShaking = true;
-            // 무작위로 카메라 위치를 흔들기
             transform.position = originalPosition + Random.insideUnitSphere * shakeMagnitude;
 
-            // shakeDuration을 줄여가며 흔들림 효과를 서서히 사라지게 함
             shakeDuration -= Time.deltaTime;
         }
         else
         {
-            if(isShaking) transform.position = originalPosition;
+            if (isShaking) transform.position = originalPosition;
             isShaking = false;
             shakeDuration = 0f;
         }
-    }
-
-    // 외부에서 호출하여 카메라를 흔들도록 하는 함수
-    public void Shake()
-    {
-        Debug.Log("카메라 흔들기");
-        shakeDuration = 0.5f; // 흔들림 지속 시간
     }
 }
