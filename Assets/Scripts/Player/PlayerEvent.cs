@@ -13,8 +13,10 @@ public class PlayerEvent : MonoBehaviour, StatEvent
     public int currenthp;
     public int maxHp;
     public float maxMp;
+    public bool isDead = false;
     private void Start()
     {
+        isDead = false;
         maxHp = GameManager.Inst.playerStat.maxHp;
         maxMp = GameManager.Inst.playerStat.maxMp;
         GameManager.Inst.playerStat.hp = maxHp;
@@ -44,7 +46,12 @@ public class PlayerEvent : MonoBehaviour, StatEvent
     public void Healed(int hp, int heal) { } //회복
     public void Dead() //죽었을 때
     {
-        lssManager.LoadScene("Stage" + (GameManager.Inst.currentStage + 1).ToString());
+        if(!isDead)
+        {
+            isDead = true;
+            gameObject.SetActive(false);
+            lssManager.LoadScene("Stage" + (GameManager.Inst.currentStage + 1).ToString());
+        }
     }
 
 }

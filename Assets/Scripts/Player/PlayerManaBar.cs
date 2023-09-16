@@ -15,5 +15,6 @@ public class PlayerManaBar : MonoBehaviour
     {
         if (GameManager.Inst.playerStat.mp < GameManager.Inst.playerStat.maxMp)
             GameManager.Inst.playerStat.mp += GameManager.Inst.playerStat.mpSpeed * Time.deltaTime;
+        SetMana(GameManager.Inst.playerStat.mp, GameManager.Inst.playerStat.maxMp);
     }
 }

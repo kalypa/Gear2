@@ -8,6 +8,8 @@ public class PlayerHealthBar : MonoBehaviour
     public Image healthImage;
 
     private void Start() => StartCoroutine(HpHealedPerSecond());
+
+    private void Update() => SetHealth(GameManager.Inst.playerStat.hp, GameManager.Inst.playerStat.maxHp);
     IEnumerator HpHealedPerSecond() //초당 HP 회복
     {
         while (true)

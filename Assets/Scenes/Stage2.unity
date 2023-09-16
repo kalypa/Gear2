@@ -8848,8 +8848,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb46cf24e714c514a91e994b11dc1354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startX: 600
-  endX: -90
+  startX: -90
+  endX: 600
 --- !u!1 &475167425
 GameObject:
   m_ObjectHideFlags: 0
