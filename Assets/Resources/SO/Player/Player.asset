@@ -16,7 +16,7 @@ MonoBehaviour:
   atk: 4
   maxHp: 100
   hp: 100
-  hpSpeed: 0
+  hpSpeed: 1
   mp: 300
   maxMp: 300
   mpSpeed: 1
