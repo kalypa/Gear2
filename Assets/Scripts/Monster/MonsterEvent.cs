@@ -28,7 +28,7 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         healthBar.SetHealth(currenthp, maxHp);
     }
 
-    public void Damaged(int hp, int damage)
+    public void Damaged(int hp, int damage) //몬스터 데미지 입었을 때
     {
         currenthp = hp - damage;
         if (!healthBar.gameObject.activeSelf) healthBar.gameObject.SetActive(true);
@@ -38,7 +38,7 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         if (currenthp <= 0) Dead();
     }
 
-    void ShowDamageText(int damage)
+    void ShowDamageText(int damage) //데미지 텍스트 출력
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 spawnPos = screenPos + new Vector3(0, 100f, 0);
@@ -46,8 +46,8 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
         damageTextObject.transform.position = spawnPos;
         damageTextObject.SetText(damage.ToString());
     }
-    public void Healed(int hp, int heal) { }
-    public void Dead()
+    public void Healed(int hp, int heal) { } //회복(몬스터는 없음)
+    public void Dead() //죽었을 때
     {
         if(!atk.isDead && !move.isDead)
         {
@@ -58,24 +58,25 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
             healthBar.gameObject.SetActive(false);
             animator.AnimationState.SetAnimation(0, "Dead", false);
             inst.playermove.isAtk = false;
+            inst.playerStat.xp += inst.monsterStats[inst.currentStage].xp;
             Invoke("DeadEffect", 1f);
         }
     }
 
-    void DeadEffect()
+    void DeadEffect() //죽음 이펙트
     {
         meshRenderer.enabled = false;
         deadEffect.SetTrigger("Dead");
         Invoke("ResetMonster", 1f);
     }
-    void ResetMonster()
+    void ResetMonster() //몬스터 초기화
     {
         PoolManager.Instance.TakeToPool(GameManager.Inst.currentStage, this);
         GameManager.Inst.monsterCount -= 1;
     }
     public void OnCreatedInPool() { }
 
-    public void OnGettingFromPool()
+    public void OnGettingFromPool() //풀매니저에서 꺼내올 때 초기화작업
     {
         if(meshRenderer != null) meshRenderer.enabled = true;
         if(atk != null) atk.isDead = false;

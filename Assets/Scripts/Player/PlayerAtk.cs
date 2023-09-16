@@ -13,7 +13,7 @@ public class PlayerAtk : AtkModule<Animator>
         attackRadius = 1f;
     }
 
-    public void Attack()
+    public void Attack() //플레이어 공격
     {
         if (isAtk && !isDead && !GameManager.Inst.playerTransform.isTransform && !GameManager.Inst.playerskill.isSkillAtk)
         {
@@ -31,10 +31,10 @@ public class PlayerAtk : AtkModule<Animator>
                     collider.GetComponent<MonsterEvent>().Damaged(collider.GetComponent<MonsterEvent>().currenthp, gm.playerStat.atk);
                 }
             }
-            Invoke("ResetAttackCooldown", GameManager.Inst.playerStat.atkSpeed);
+            Invoke("ResetAttackCooldown", gm.playerStat.atkSpeed - gm.playerStat.addAtkSpeed);
         }
     }
-    void PassiveAtk(int mode)
+    void PassiveAtk(int mode) //플레이어 패시브 공격
     {
         if(mode == 1)
         {
@@ -51,7 +51,7 @@ public class PlayerAtk : AtkModule<Animator>
             }
         }
     }
-    private void ResetAttackCooldown()
+    private void ResetAttackCooldown() //공격 쿨타임 초기화
     {
         isAtk = true;
     }

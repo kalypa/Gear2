@@ -8,7 +8,7 @@ public class AutoButton : MonoBehaviour
     public Sprite usedSprite;
     public Sprite notUsedSprite;
     private bool isActiveAuto = false;
-    public void OnClickAutoButton()
+    public void OnClickAutoButton() //오토 버튼 클릭
     {
         Debug.Log("자동");
         if(!isActiveAuto) isActiveAuto = true;

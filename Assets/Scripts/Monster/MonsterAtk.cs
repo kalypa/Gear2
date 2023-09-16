@@ -12,7 +12,7 @@ public class MonsterAtk : AtkModule<SkeletonAnimation>
         attackRadius = 0.5f;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //플레이어가 범위내에 있을때 공격
     {
         if (collision.CompareTag("Player"))
         {
@@ -20,11 +20,11 @@ public class MonsterAtk : AtkModule<SkeletonAnimation>
             StartCoroutine(Attack(collision));
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision) //범위 밖이라면 다시 추격
     {
         isAtk = false;
     }
-    IEnumerator Attack(Collider2D collision)
+    IEnumerator Attack(Collider2D collision) //몬스터 공격 
     {
         while (true)
         {

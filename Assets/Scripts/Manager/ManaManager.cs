@@ -15,7 +15,7 @@ public class ManaManager : MonoBehaviour
         ScarceMana();
         MainScareMana();
     }
-    void ScarceMana()
+    void ScarceMana() //변신 스킬 마나부족 체크
     {
         for(int i = 0; i < 4; i++)
         {
@@ -34,7 +34,7 @@ public class ManaManager : MonoBehaviour
         }
     }
 
-    void MainScareMana()
+    void MainScareMana() //메인 스킬 마나부족 체크
     {
         if (skillStats[4].costMana > GameManager.Inst.playerStat.mp)
         {

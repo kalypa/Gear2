@@ -23,14 +23,8 @@ public class PlayerSkill : MainSkillManager
     {
         player = GetComponent<PlayerEvent>();
     }
-    private void Update()
-    {
-        UseSkillAuto();
-    }
-    public void OnClickMainSkillbutton()
-    {
-        SkillAction();
-    }
+    private void Update() => UseSkillAuto();
+    public void OnClickMainSkillbutton() => SkillAction();
     void UseSkillAuto()
     {
         if(isAuto && isUseSkill && IsInAttackRange(skillStat[GameManager.Inst.playerTransform.playermode - 1].attackRadius))

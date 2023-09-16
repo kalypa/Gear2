@@ -13,9 +13,10 @@ public class PlayerStat : ScriptableObject
     public float mp;
     public float maxMp;
     public int mpSpeed;
-    public int maxXp;
-    public int xp;
+    public float maxXp;
+    public float xp;
     public float atkSpeed;
+    public float addAtkSpeed;
     public int healHp;
     public int healMp;
     public int whitePassiveAtk;

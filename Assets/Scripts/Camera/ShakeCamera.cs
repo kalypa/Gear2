@@ -7,7 +7,7 @@ public class ShakeCamera : MonoSingleton<ShakeCamera>
 {
     private Vector3 originalPosition; // 카메라 원래 위치
     private float shakeDuration = 0f; // 흔들림 지속 시간
-    private float shakeMagnitude = 0.2f; // 흔들림의 크기
+    private float shakeMagnitude = 0.15f; // 흔들림의 크기
     public bool isShaking = false;
 
     private void Update()

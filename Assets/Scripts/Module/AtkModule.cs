@@ -9,8 +9,5 @@ public abstract class AtkModule<T> : MonoBehaviour
     public bool isDead = false;
     public float attackRadius;
 
-    protected virtual void Start()
-    {
-        animator = GetComponent<T>();
-    }
+    protected virtual void Start() => animator = GetComponent<T>();
 }

@@ -13,12 +13,9 @@ public class PlayerMove : MoveModule<Animator>
         animator = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        Move();
-    }
+    void Update() => Move();
 
-    public override void Move()
+    public override void Move() //플레이어 이동
     {
         if (!GameManager.Inst.playerTransform.isTransform && !GameManager.Inst.playerskill.isSkillAtk)
         {
@@ -34,12 +31,12 @@ public class PlayerMove : MoveModule<Animator>
         }
     }
 
-    public override void Flip(float horizontal)
+    public override void Flip(float horizontal) //플레이어 스프라이트 방향에 맞게 돌리기
     {
         if(Mathf.Abs(horizontal) > 0) spriteRenderer.flipX = horizontal < 0;
     }
 
-    void RunAnim(float h, float v)
+    void RunAnim(float h, float v) //플레이어 이동 애니메이션
     {
         isAtk = false;
         isChased = false;
@@ -47,7 +44,7 @@ public class PlayerMove : MoveModule<Animator>
         else animator.SetBool("IsMove", false);
     }
 
-    void FindClosestEnemy()
+    void FindClosestEnemy() //가까운 적 추적
     {
         if(!GameManager.Inst.playerTransform.isTransform && !GameManager.Inst.playerskill.isSkillAtk)
         {
@@ -80,7 +77,7 @@ public class PlayerMove : MoveModule<Animator>
         }
     }
 
-    void FindEnemy()
+    void FindEnemy() //적 발견
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, GetComponent<PlayerAtk>().attackRadius);
 
