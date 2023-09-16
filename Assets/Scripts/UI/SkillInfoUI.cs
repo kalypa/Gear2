@@ -1,24 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillInfoUI : MonoBehaviour
 {
     public SkillStat[] skills = new SkillStat[7];
-    private string passiveInfo;
-    private string skillInfo;
+    public Text passiveInfo;
+    public Text skillInfo;
     public int infoIndex;
     void Update()
     {
-        passiveInfo = SetPassiveInfoText();
-        skillInfo = SetSkillInfoText();
+        passiveInfo.text = SetPassiveInfoText();
+        skillInfo.text = SetSkillInfoText();
     }
 
     string SetPassiveInfoText() => infoIndex switch
     {
-        3 => "공격 범위가 조금 넓어지며 매 공격마다 공격력의 <color=red>" +
+        3 => "공격 범위가 조금 넓어지며 매 공격마다 <color=red>" +
         GameManager.Inst.playerStat.normalPassiveAtk.ToString() + "</color>만큼의 피해를 추가로 입힙니다.",
-        4 => "자신 주위의 적들에게 초당 공격력의 <color=red>" +
+        4 => "자신 주위의 적들에게 초당 <color=red>" +
         GameManager.Inst.playerStat.darkPassiveAtk.ToString() + "</color>에 달하는 피해를 입힙니다",
         5 => "3번째 공격마다 자신 전방의 적들에게 피해를 입히는 검기를 발사하여 <color=red>" +
         GameManager.Inst.playerStat.whitePassiveAtk.ToString() + "</color>에 달하는 피해를 입힙니다",

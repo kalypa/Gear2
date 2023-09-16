@@ -1334,7 +1334,7 @@ GameObject:
   - component: {fileID: 80841351}
   - component: {fileID: 80841350}
   - component: {fileID: 80841349}
-  - component: {fileID: 80841348}
+  - component: {fileID: 80841352}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -1365,23 +1365,6 @@ RectTransform:
   m_AnchoredPosition: {x: -20, y: 0}
   m_SizeDelta: {x: 160, y: 85}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &80841348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 80841346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a942dc2a86999e54b9a419aa88d8e50b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextStat: {fileID: 0}
-  goldText: {fileID: 0}
-  statLevel: {fileID: 1737248876}
-  statSO: {fileID: 11400000, guid: 0953fb3c2200c1d49a04234aef175cc6, type: 2}
-  maxImage: {fileID: 1278929293}
 --- !u!114 &80841349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1426,9 +1409,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 80841348}
-        m_TargetAssemblyTypeName: StatLevelUp, Assembly-CSharp
-        m_MethodName: OnClickStatLevelUpButton
+      - m_Target: {fileID: 80841352}
+        m_TargetAssemblyTypeName: SkillLevelUp, Assembly-CSharp
+        m_MethodName: OnClickSkillLevelUpButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1476,6 +1459,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80841346}
   m_CullTransparentMesh: 1
+--- !u!114 &80841352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80841346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944a4b1d45483c442b91611a2c0a4366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: eea07246fda84c04cbcd22743ae3bc71, type: 2}
+  goldText: {fileID: 358538265}
+  skillLevel: {fileID: 1737248876}
+  maxImage: {fileID: 1278929293}
 --- !u!1 &88546953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,6 +1487,7 @@ GameObject:
   - component: {fileID: 88546958}
   - component: {fileID: 88546957}
   - component: {fileID: 88546956}
+  - component: {fileID: 88546959}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -1561,7 +1561,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 88546957}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88546959}
+        m_TargetAssemblyTypeName: SkillLevelUp, Assembly-CSharp
+        m_MethodName: OnClickSkillLevelUpButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &88546957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1600,6 +1612,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88546953}
   m_CullTransparentMesh: 1
+--- !u!114 &88546959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88546953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944a4b1d45483c442b91611a2c0a4366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: dd5b530f7eb93e8468976cd241a1a0fb, type: 2}
+  goldText: {fileID: 301314894}
+  skillLevel: {fileID: 966046399}
+  maxImage: {fileID: 663848186}
 --- !u!1 &90609226
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,7 +2991,7 @@ GameObject:
   - component: {fileID: 150732119}
   - component: {fileID: 150732118}
   - component: {fileID: 150732117}
-  - component: {fileID: 150732116}
+  - component: {fileID: 150732120}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -2994,23 +3022,6 @@ RectTransform:
   m_AnchoredPosition: {x: -20, y: 0}
   m_SizeDelta: {x: 160, y: 85}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &150732116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 150732114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a942dc2a86999e54b9a419aa88d8e50b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextStat: {fileID: 0}
-  goldText: {fileID: 0}
-  statLevel: {fileID: 1444732612}
-  statSO: {fileID: 11400000, guid: 0953fb3c2200c1d49a04234aef175cc6, type: 2}
-  maxImage: {fileID: 1465554306}
 --- !u!114 &150732117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3055,9 +3066,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 150732116}
-        m_TargetAssemblyTypeName: StatLevelUp, Assembly-CSharp
-        m_MethodName: OnClickStatLevelUpButton
+      - m_Target: {fileID: 150732120}
+        m_TargetAssemblyTypeName: SkillLevelUp, Assembly-CSharp
+        m_MethodName: OnClickSkillLevelUpButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3105,6 +3116,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150732114}
   m_CullTransparentMesh: 1
+--- !u!114 &150732120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150732114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944a4b1d45483c442b91611a2c0a4366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 33746acbb24af1d4587711f33a29905c, type: 2}
+  goldText: {fileID: 1998922631}
+  skillLevel: {fileID: 1444732612}
+  maxImage: {fileID: 1465554306}
 --- !u!1 &156558940
 GameObject:
   m_ObjectHideFlags: 0
@@ -3468,7 +3495,7 @@ GameObject:
   - component: {fileID: 189769569}
   - component: {fileID: 189769568}
   - component: {fileID: 189769567}
-  - component: {fileID: 189769566}
+  - component: {fileID: 189769570}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -3499,23 +3526,6 @@ RectTransform:
   m_AnchoredPosition: {x: -20, y: 0}
   m_SizeDelta: {x: 160, y: 85}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &189769566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189769564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a942dc2a86999e54b9a419aa88d8e50b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextStat: {fileID: 0}
-  goldText: {fileID: 0}
-  statLevel: {fileID: 1523118510}
-  statSO: {fileID: 11400000, guid: 0953fb3c2200c1d49a04234aef175cc6, type: 2}
-  maxImage: {fileID: 437569556}
 --- !u!114 &189769567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3560,9 +3570,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 189769566}
-        m_TargetAssemblyTypeName: StatLevelUp, Assembly-CSharp
-        m_MethodName: OnClickStatLevelUpButton
+      - m_Target: {fileID: 189769570}
+        m_TargetAssemblyTypeName: SkillLevelUp, Assembly-CSharp
+        m_MethodName: OnClickSkillLevelUpButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3610,6 +3620,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189769564}
   m_CullTransparentMesh: 1
+--- !u!114 &189769570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189769564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944a4b1d45483c442b91611a2c0a4366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 503c82ca6241624408092bfcb71de65c, type: 2}
+  goldText: {fileID: 656333067}
+  skillLevel: {fileID: 1523118510}
+  maxImage: {fileID: 437569556}
 --- !u!1 &189854662
 GameObject:
   m_ObjectHideFlags: 0
@@ -6885,9 +6911,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 572479908}
-        m_TargetAssemblyTypeName: SkillUI, Assembly-CSharp
-        m_MethodName: OnClickSkillExitButton
+      - m_Target: {fileID: 537136607}
+        m_TargetAssemblyTypeName: SkillPanel, Assembly-CSharp
+        m_MethodName: OnClickSkillInfoExitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6897,9 +6923,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 537136607}
-        m_TargetAssemblyTypeName: SkillPanel, Assembly-CSharp
-        m_MethodName: OnClickSkillInfoExitButton
+      - m_Target: {fileID: 572479908}
+        m_TargetAssemblyTypeName: SkillUI, Assembly-CSharp
+        m_MethodName: OnClickSkillExitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7944,21 +7970,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StatPanel, Assembly-CSharp
-        m_MethodName: OnClickPanelExitButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StatPanel, Assembly-CSharp
-        m_MethodName: OnClickPanelExitButton
+      - m_Target: {fileID: 537136607}
+        m_TargetAssemblyTypeName: SkillPanel, Assembly-CSharp
+        m_MethodName: OnClickSkillInfoExitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8343,13 +8357,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 495556081}
+        m_TargetAssemblyTypeName: SkillPanel, Assembly-CSharp
+        m_MethodName: OnClickSkillInfoEnterButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8371,6 +8385,7 @@ MonoBehaviour:
   index: 3
   startX: -600
   endX: 90
+  rectInfo: {fileID: 560002832}
 --- !u!1 &501902823
 GameObject:
   m_ObjectHideFlags: 0
@@ -8701,6 +8716,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dd5b530f7eb93e8468976cd241a1a0fb, type: 2}
   - {fileID: 11400000, guid: 503c82ca6241624408092bfcb71de65c, type: 2}
   - {fileID: 11400000, guid: 33746acbb24af1d4587711f33a29905c, type: 2}
+  passiveInfo: {fileID: 365816935}
+  skillInfo: {fileID: 970632265}
   infoIndex: 0
 --- !u!1 &509540842
 GameObject:
@@ -9015,7 +9032,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1805837241}
   m_HandleRect: {fileID: 1805837240}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -9529,6 +9546,7 @@ MonoBehaviour:
   index: 0
   startX: -600
   endX: 90
+  rectInfo: {fileID: 560002832}
 --- !u!1 &537411142
 GameObject:
   m_ObjectHideFlags: 0
@@ -10284,7 +10302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 90, y: 0}
+  m_AnchoredPosition: {x: -600, y: 0}
   m_SizeDelta: {x: 500, y: 800}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &560002833
@@ -10471,7 +10489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -90, y: 0}
+  m_AnchoredPosition: {x: 600, y: 0}
   m_SizeDelta: {x: 500, y: 800}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &572479905
@@ -11257,13 +11275,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 603639470}
+        m_TargetAssemblyTypeName: SkillPanel, Assembly-CSharp
+        m_MethodName: OnClickSkillInfoEnterButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11285,6 +11303,7 @@ MonoBehaviour:
   index: 4
   startX: -600
   endX: 90
+  rectInfo: {fileID: 560002832}
 --- !u!1 &609048268
 GameObject:
   m_ObjectHideFlags: 0
@@ -16791,7 +16810,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -153.2, y: -65}
-  m_SizeDelta: {x: 500, y: 100}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &970632265
 MonoBehaviour:
@@ -23760,6 +23779,7 @@ GameObject:
   - component: {fileID: 1355939750}
   - component: {fileID: 1355939749}
   - component: {fileID: 1355939748}
+  - component: {fileID: 1355939751}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -23833,7 +23853,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1355939749}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1355939751}
+        m_TargetAssemblyTypeName: SkillLevelUp, Assembly-CSharp
+        m_MethodName: OnClickSkillLevelUpButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1355939749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23872,6 +23904,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355939745}
   m_CullTransparentMesh: 1
+--- !u!114 &1355939751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355939745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944a4b1d45483c442b91611a2c0a4366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 38fef74d5693ba24eaad7b761d662234, type: 2}
+  goldText: {fileID: 503517171}
+  skillLevel: {fileID: 1445666510}
+  maxImage: {fileID: 1807367883}
 --- !u!1 &1356132943
 GameObject:
   m_ObjectHideFlags: 0
@@ -25807,6 +25855,7 @@ GameObject:
   - component: {fileID: 1469692797}
   - component: {fileID: 1469692796}
   - component: {fileID: 1469692795}
+  - component: {fileID: 1469692798}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -25880,7 +25929,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1469692796}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1469692798}
+        m_TargetAssemblyTypeName: SkillLevelUp, Assembly-CSharp
+        m_MethodName: OnClickSkillLevelUpButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1469692796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25919,6 +25980,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469692792}
   m_CullTransparentMesh: 1
+--- !u!114 &1469692798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469692792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944a4b1d45483c442b91611a2c0a4366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 752db7ecd29d2b94982c459f13762e73, type: 2}
+  goldText: {fileID: 1726305174}
+  skillLevel: {fileID: 464268269}
+  maxImage: {fileID: 68337921}
 --- !u!1 &1470921499
 GameObject:
   m_ObjectHideFlags: 0
@@ -30088,13 +30165,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1692129219}
+        m_TargetAssemblyTypeName: SkillPanel, Assembly-CSharp
+        m_MethodName: OnClickSkillInfoEnterButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -30116,6 +30193,7 @@ MonoBehaviour:
   index: 2
   startX: -600
   endX: 90
+  rectInfo: {fileID: 560002832}
 --- !u!1 &1692476507
 GameObject:
   m_ObjectHideFlags: 0
@@ -32002,7 +32080,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1700849539}
   m_HandleRect: {fileID: 1700849538}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -33339,13 +33417,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1790185906}
+        m_TargetAssemblyTypeName: SkillPanel, Assembly-CSharp
+        m_MethodName: OnClickSkillInfoEnterButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -33367,6 +33445,7 @@ MonoBehaviour:
   index: 1
   startX: -600
   endX: 90
+  rectInfo: {fileID: 560002832}
 --- !u!1 &1794877507
 GameObject:
   m_ObjectHideFlags: 0
@@ -37603,13 +37682,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2119169847}
+        m_TargetAssemblyTypeName: SkillPanel, Assembly-CSharp
+        m_MethodName: OnClickSkillInfoEnterButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -37631,6 +37710,7 @@ MonoBehaviour:
   index: 5
   startX: -600
   endX: 90
+  rectInfo: {fileID: 560002832}
 --- !u!1 &2122410941
 GameObject:
   m_ObjectHideFlags: 0

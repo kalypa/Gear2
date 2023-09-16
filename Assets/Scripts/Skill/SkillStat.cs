@@ -12,4 +12,6 @@ public class SkillStat : ScriptableObject
     public int damage;
     public float attackRadius;
     public int prize;
+    public int goldIndex;
+    public int addDamage;
 }

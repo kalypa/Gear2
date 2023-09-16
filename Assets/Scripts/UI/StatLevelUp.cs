@@ -12,7 +12,6 @@ public class StatLevelUp : MonoBehaviour
     public Text statLevel;
     public StatSO statSO;
     public Image maxImage;
-    int stat;
     void Update()
     {
         AddStat();
@@ -81,7 +80,7 @@ public class StatLevelUp : MonoBehaviour
         if(statSO.index != 3) nextStat.text = (Stats() + statSO.addStat).ToString();
         else nextStat.text = (Stats() + (int)(statSO.addStatF * 100)).ToString() + "%";
         statSO.prize = statSO.level * statSO.prize;
-        if (statSO.prize >= 1000) statSO.goldIndex += 1;
+        //if (statSO.prize >= 1000) statSO.goldIndex += 1;
         statLevel.text = statSO.level.ToString();
         if(statSO.level == statSO.maxLevel) maxImage.gameObject.SetActive(true);
         goldText.text = (statSO.prize * statSO.level).ToString();

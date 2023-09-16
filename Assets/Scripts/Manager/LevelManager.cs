@@ -11,9 +11,10 @@ public class LevelManager : MonoBehaviour
     public void OnClickLevelUp()
     {
         var stat = GameManager.Inst.playerStat;
-        if (stat.xp > stat.maxXp)
+        if (stat.xp >= stat.maxXp)
         {
             GameManager.Inst.playerStat.level += 1;
+            stat.xp = 0;
             stat.maxXp += 100;
             stat.atk += 4;
             stat.hp += 40;

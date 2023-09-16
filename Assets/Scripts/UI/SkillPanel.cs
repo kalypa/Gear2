@@ -8,11 +8,7 @@ public class SkillPanel : MonoBehaviour
     public int index;
     public float startX;
     public float endX;
-    RectTransform rectInfo;
-    private void Start()
-    {
-        rectInfo = skillInfo.GetComponent<RectTransform>();
-    }
+    public RectTransform rectInfo;
     public void OnClickSkillInfoEnterButton()
     {
         skillInfo.infoIndex = index;

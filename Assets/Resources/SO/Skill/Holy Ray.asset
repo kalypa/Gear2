@@ -19,3 +19,5 @@ MonoBehaviour:
   damage: 30
   attackRadius: 7
   prize: 100
+  goldIndex: 0
+  addDamage: 15
