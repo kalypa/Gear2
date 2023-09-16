@@ -1,12 +1,26 @@
 using UnityEngine;
 
-namespace DarkPixelRPGUI.Scripts
+
+public class ApplicationExit : MonoBehaviour
 {
-    public class ApplicationExit : MonoBehaviour
+    public GameObject exitPanel;
+    public void OnClickExit()
     {
-        public void Exit()
+        Application.Quit();
+    }
+
+    public void OnClickCancel()
+    {
+        Time.timeScale = 1f;
+        exitPanel.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            Time.timeScale = 0f;
+            exitPanel.SetActive(true);
         }
     }
 }
