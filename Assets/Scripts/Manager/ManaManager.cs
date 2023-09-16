@@ -44,7 +44,7 @@ public class ManaManager : MonoBehaviour
         }
         else if (GameManager.Inst.playerskill.isUseSkill && GameManager.Inst.playerTransform.isUseSkill)
         {
-            skillFillAmounts[4].fillAmount = 0;
+            if (skillFillAmounts[4].fillAmount == 1) skillFillAmounts[4].fillAmount = 0;
             scarceTexts[4].text = "";
             coolTimeText[4].enabled = true;
         }
