@@ -11,7 +11,7 @@ public class XpUI : MonoBehaviour
     public TextMeshProUGUI levelText;
     void Update() => SetXp();
 
-    void SetXp()
+    void SetXp() //XP ¼¼ÆÃ
     {
         var stat = GameManager.Inst.playerStat;
         xpBar.fillAmount = stat.xp / stat.maxXp;

@@ -13,11 +13,11 @@ public class SkillUI : MonoBehaviour
     {
         rect = GetComponent<RectTransform>();
     }
-    public void OnClickSkillEnterButton()
+    public void OnClickSkillEnterButton() //패널 보이기
     {
         rect.DOAnchorPosX(endX, 0.1f);
     }
-    public void OnClickSkillExitButton()
+    public void OnClickSkillExitButton() //패널 숨기기
     {
         rect.DOAnchorPosX(startX, 0.1f);
     }

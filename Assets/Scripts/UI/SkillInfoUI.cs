@@ -15,7 +15,7 @@ public class SkillInfoUI : MonoBehaviour
         skillInfo.text = SetSkillInfoText();
     }
 
-    string SetPassiveInfoText() => infoIndex switch
+    string SetPassiveInfoText() => infoIndex switch //변신 스킬 패시브 설명 텍스트 설정
     {
         3 => "공격 범위가 조금 넓어지며 매 공격마다 <color=red>" +
         GameManager.Inst.playerStat.normalPassiveAtk.ToString() + "</color>만큼의 피해를 추가로 입힙니다.",
@@ -26,7 +26,7 @@ public class SkillInfoUI : MonoBehaviour
         _ => ""
     };
 
-    string SetSkillInfoText() => infoIndex switch
+    string SetSkillInfoText() => infoIndex switch //메인 스킬 효과 설명 텍스트 설정
     {
         0 => "자신 주위의 적들에게 <color=red>" +
         skills[infoIndex].damage.ToString() + "</color>만큼의 피해를 추가로 입힙니다.",

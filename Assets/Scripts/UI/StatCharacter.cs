@@ -12,12 +12,9 @@ public class StatCharacter : MonoBehaviour
     {
         rect = GetComponent<RectTransform>();
     }
-    void Update()
-    {
-        SetStatCharacter();
-    }
+    void Update() => SetStatCharacter();
 
-    void SetStatCharacter()
+    void SetStatCharacter() //변신 상태에 따라 캐릭터 UI 변경
     {
         if (GameManager.Inst.playerTransform.playermode != 1) rect.sizeDelta = new Vector2(22 * 6, 108);
         else rect.sizeDelta = new Vector2(90, 108);

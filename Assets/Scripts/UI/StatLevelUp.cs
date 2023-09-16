@@ -12,12 +12,9 @@ public class StatLevelUp : MonoBehaviour
     public Text statLevel;
     public StatSO statSO;
     public Image maxImage;
-    void Update()
-    {
-        AddStat();
-    }
+    void Update() => AddStat();
 
-    public void OnClickStatLevelUpButton()
+    public void OnClickStatLevelUpButton() //스탯 레벨업 버튼 클릭
     {
         if(statSO.prize <= GoldManager.Inst.gold.getmoney())
         {
@@ -33,7 +30,7 @@ public class StatLevelUp : MonoBehaviour
             statSO.level += 1;
         }
     }
-    int Stats() => statSO.index switch
+    int Stats() => statSO.index switch //증가시킬 스탯 판별
     {
         0 => GameManager.Inst.playerStat.atk,
         1 => GameManager.Inst.playerStat.maxHp,
@@ -46,7 +43,7 @@ public class StatLevelUp : MonoBehaviour
         _ => throw new System.NotImplementedException(),
     };
 
-    void StatLevel()
+    void StatLevel() //스탯 조건에 따라 증가
     {
         switch (statSO.index)
         { 
@@ -75,7 +72,7 @@ public class StatLevelUp : MonoBehaviour
 
     }
 
-    void AddStat()
+    void AddStat() //스탯 증가
     {
         if(statSO.index != 3) nextStat.text = (Stats() + statSO.addStat).ToString();
         else nextStat.text = (Stats() + (int)(statSO.addStatF * 100)).ToString() + "%";

@@ -41,11 +41,11 @@ public class StatPanel : MonoBehaviour
         8 => "Level " + stat.level.ToString(),
         _ => throw new System.NotImplementedException(),
     };
-    public void OnClickPanelEnterButton()
+    public void OnClickPanelEnterButton() //패널 보이기
     {
         rect.DOAnchorPosX(endX, 0.1f);
     }
-    public void OnClickPanelExitButton()
+    public void OnClickPanelExitButton() //패널 숨기기
     {
         rect.DOAnchorPosX(startX, 0.1f);
     }

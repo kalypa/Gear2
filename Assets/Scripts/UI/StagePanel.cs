@@ -12,12 +12,12 @@ public class StagePanel : MonoBehaviour
     {
         rect = GetComponent<RectTransform>();
     }
-    public void OnClickExitStagePanel()
+    public void OnClickExitStagePanel() //패널 숨기기
     {
         rect.DOAnchorPosX(endX, 0.1f);
     }
 
-    public void OnClickEnterStagePanel()
+    public void OnClickEnterStagePanel() //패널 보이기
     {
         rect.DOAnchorPosX(startX, 0.1f);
     }
