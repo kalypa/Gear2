@@ -11,4 +11,5 @@ public class SkillStat : ScriptableObject
     public float coolTime;
     public int damage;
     public float attackRadius;
+    public int prize;
 }

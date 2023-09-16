@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class StatLevelUp : MonoBehaviour
 {
     public TextMeshProUGUI nextStat;
+    public TextMeshProUGUI goldText;
     public Text statLevel;
     public StatSO statSO;
     public Image maxImage;
@@ -29,7 +30,7 @@ public class StatLevelUp : MonoBehaviour
             {
                 GameManager.Inst.playerStat.addAtkSpeed += statSO.addStatF;
             }
-            GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(statSO.goldIndex, statSO.prize));
+            GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(statSO.goldIndex, statSO.prize * statSO.level));
             statSO.level += 1;
         }
     }
@@ -83,5 +84,6 @@ public class StatLevelUp : MonoBehaviour
         if (statSO.prize >= 1000) statSO.goldIndex += 1;
         statLevel.text = statSO.level.ToString();
         if(statSO.level == statSO.maxLevel) maxImage.gameObject.SetActive(true);
+        goldText.text = (statSO.prize * statSO.level).ToString();
     }
 }

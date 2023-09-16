@@ -18,3 +18,4 @@ MonoBehaviour:
   coolTime: 13
   damage: 10
   attackRadius: 2
+  prize: 100

@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+public class SkillPanel : MonoBehaviour
+{
+    public SkillInfoUI skillInfo;
+    public int index;
+    public float startX;
+    public float endX;
+    RectTransform rectInfo;
+    private void Start()
+    {
+        rectInfo = skillInfo.GetComponent<RectTransform>();
+    }
+    public void OnClickSkillInfoEnterButton()
+    {
+        skillInfo.infoIndex = index;
+        if(rectInfo.anchoredPosition.x != endX) rectInfo.DOAnchorPosX(endX, 0.1f);
+    }
+    public void OnClickSkillInfoExitButton()
+    {
+        rectInfo.DOAnchorPosX(startX, 0.1f);
+    }
+}
