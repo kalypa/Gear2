@@ -54,4 +54,9 @@ public class PlayerEvent : MonoBehaviour, StatEvent
         }
     }
 
+    public void SceneMove()
+    {
+        gameObject.SetActive(false);
+    }
+
 }

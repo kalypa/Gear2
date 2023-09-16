@@ -18,6 +18,6 @@ MonoBehaviour:
   coolTime: 5
   damage: 20
   attackRadius: 3
-  prize: 100
+  prize: 200
   goldIndex: 0
   addDamage: 10
