@@ -30,7 +30,7 @@ public class PlayerSkill : MainSkillManager
     {
         if(isAuto && isUseSkill && IsInAttackRange(skillStat[GameManager.Inst.playerTransform.playermode - 1].attackRadius))
         {
-            if(!GameManager.Inst.playerTransform.isUsed && !GameManager.Inst.playerTransform.isTransform)
+            if(!GameManager.Inst.playerTransform.isTransform)
             {
                 if (isUsed)
                 {
