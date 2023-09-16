@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DarkExplosion
   m_EditorClassIdentifier: 
   level: 1
-  maxLevel: 10
+  maxLevel: 20
   costMana: 80
   coolTime: 5
   damage: 24

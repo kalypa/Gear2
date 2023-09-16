@@ -26,7 +26,7 @@ public class StatLevelUp : MonoBehaviour
             {
                 GameManager.Inst.playerStat.addAtkSpeed += statSO.addStatF;
             }
-            GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(statSO.goldIndex, statSO.prize * statSO.level));
+            GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(statSO.goldIndex, statSO.prize));
             statSO.level += 1;
         }
     }
@@ -76,10 +76,10 @@ public class StatLevelUp : MonoBehaviour
     {
         if(statSO.index != 3) nextStat.text = (Stats() + statSO.addStat).ToString();
         else nextStat.text = (Stats() + (int)(statSO.addStatF * 100)).ToString() + "%";
-        statSO.prize = statSO.level * statSO.prize;
+        statSO.prize = statSO.level * 10;
         //if (statSO.prize >= 1000) statSO.goldIndex += 1;
         statLevel.text = statSO.level.ToString();
         if(statSO.level == statSO.maxLevel) maxImage.gameObject.SetActive(true);
-        goldText.text = (statSO.prize * statSO.level).ToString();
+        goldText.text = (statSO.prize).ToString();
     }
 }

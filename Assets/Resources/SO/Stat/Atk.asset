@@ -18,3 +18,4 @@ MonoBehaviour:
   addStat: 2
   addStatF: 0
   prize: 10
+  goldIndex: 0

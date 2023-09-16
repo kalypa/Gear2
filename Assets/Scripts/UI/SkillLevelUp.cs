@@ -16,15 +16,15 @@ public class SkillLevelUp : MonoBehaviour
         if (skill.prize <= GoldManager.Inst.gold.getmoney())
         {
             skill.damage += skill.addDamage;
-            GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(skill.goldIndex, skill.prize * skill.level));
+            GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(skill.goldIndex, skill.prize));
             skill.level += 1;
         }
     }
     void SetSkillStat() //스킬 스탯 세팅
     {
         //if (skill.prize >= 1000) skill.goldIndex += 1;
-        skill.prize = skill.level * skill.prize;
-        goldText.text = (skill.prize * skill.level).ToString();
+        skill.prize = skill.level * 100;
+        goldText.text = (skill.prize).ToString();
         skillLevel.text = skill.level.ToString();
         if (skill.level == skill.maxLevel) maxImage.gameObject.SetActive(true);
     }

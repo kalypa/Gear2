@@ -20,8 +20,8 @@ MonoBehaviour:
   mp: 300
   maxMp: 300
   mpSpeed: 1
-  maxXp: 400
-  xp: 0
+  maxXp: 300
+  xp: 300
   atkSpeed: 1
   addAtkSpeed: 0
   healHp: 5

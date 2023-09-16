@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WhiteToNormal
   m_EditorClassIdentifier: 
   level: 1
-  maxLevel: 10
+  maxLevel: 20
   costMana: 40
   coolTime: 13
   damage: 10
