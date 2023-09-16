@@ -1,3 +1,4 @@
+using Michsky.LSS;
 using Redcode.Pools;
 using Spine;
 using System.Collections;
@@ -6,9 +7,9 @@ using UnityEngine;
 
 public class PlayerEvent : MonoBehaviour, StatEvent
 {
-    public ParticleSystem deadEffect;
     public PlayerHealthBar healthBar;
     public PlayerManaBar manaBar;
+    public LSS_Manager lssManager;
     public int currenthp;
     public int maxHp;
     public float maxMp;
@@ -43,7 +44,7 @@ public class PlayerEvent : MonoBehaviour, StatEvent
     public void Healed(int hp, int heal) { }
     public void Dead()
     {
-        //Invoke("DeadEffect", 1f);
+        lssManager.LoadScene("Stage" + (GameManager.Inst.currentStage + 1).ToString());
     }
 
 }

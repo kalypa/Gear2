@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2979792733589198391}
   - component: {fileID: 8391212609201388610}
   - component: {fileID: 3302907401868107051}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DeadEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 597307807014806405}
   - component: {fileID: 6695026771788862961}
   - component: {fileID: 6207108339995174444}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Damaged_Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 3031563135085683390}
   - component: {fileID: 3031563135085683384}
   - component: {fileID: 3031563135085683385}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 3031563135133161417}
   - component: {fileID: 3031563135133161416}
   - component: {fileID: 3031563135133161419}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 3031563135133161416}
-  target: {fileID: 0}
+  target: {fileID: 3034777195803540673}
 --- !u!1 &3031563136090226431
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +402,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3031563136090226430}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 3031563136424949642}
   - component: {fileID: 3031563136424949364}
   - component: {fileID: 3031563136424949365}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 3031563136429289597}
   - component: {fileID: 3031563136429289586}
   - component: {fileID: 3031563136429289587}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,9 +622,10 @@ GameObject:
   - component: {fileID: 3031563135926728237}
   - component: {fileID: 3031563135926728239}
   - component: {fileID: 3031563135926728236}
-  m_Layer: 0
+  - component: {fileID: 5278626747347762696}
+  m_Layer: 7
   m_Name: Monster3
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -781,3 +782,29 @@ MonoBehaviour:
   isAtk: 1
   isDead: 0
   attackRadius: 0.5
+--- !u!61 &5278626747347762696
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3033033742945441533}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.09376454, y: 2.0719757}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.160443, y: 6.702896}
+  m_EdgeRadius: 0

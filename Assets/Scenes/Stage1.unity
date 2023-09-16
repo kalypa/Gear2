@@ -1844,6 +1844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92131332995c83c4f914b0f37efcc302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldText: {fileID: 0}
   text: {fileID: 2147295969}
 --- !u!1 &95112417
 GameObject:
@@ -8541,7 +8542,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -90, y: 200}
+  m_AnchoredPosition: {x: 600, y: 200}
   m_SizeDelta: {x: 500, y: 450}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &472332751
@@ -9889,6 +9890,7 @@ GameObject:
   - component: {fileID: 526139447}
   - component: {fileID: 526139449}
   - component: {fileID: 526139448}
+  - component: {fileID: 526139450}
   m_Layer: 5
   m_Name: Ground
   m_TagString: Untagged
@@ -9954,6 +9956,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526139446}
   m_CullTransparentMesh: 1
+--- !u!114 &526139450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526139446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a9decaac3ee1541aa184c9bd593052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundImage: {fileID: 526139448}
+  background:
+  - {fileID: 21300000, guid: 25d0a0b307d7a6248b86a8092f2d186a, type: 3}
+  - {fileID: 21300000, guid: bf434262e6427dc41b2d14addde00d26, type: 3}
+  - {fileID: 21300000, guid: f5fa31379e368914e954914da382098b, type: 3}
 --- !u!1 &532434511
 GameObject:
   m_ObjectHideFlags: 0
@@ -26246,9 +26265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f134a3fe1801c4d4ca442813c31dcada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadEffect: {fileID: 0}
   healthBar: {fileID: 224465452919533467}
   manaBar: {fileID: 224457203812223962}
+  lssManager: {fileID: 2053561535}
   currenthp: 0
   maxHp: 0
   maxMp: 0
@@ -26736,6 +26755,7 @@ GameObject:
   - component: {fileID: 1424658971}
   - component: {fileID: 1424658973}
   - component: {fileID: 1424658972}
+  - component: {fileID: 1424658974}
   m_Layer: 5
   m_Name: Player
   m_TagString: Untagged
@@ -26801,6 +26821,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424658970}
   m_CullTransparentMesh: 1
+--- !u!114 &1424658974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424658970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6a1a5be8be4c4b9dcc71d4b641484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterImage: {fileID: 1424658972}
+  characters:
+  - {fileID: 21300000, guid: c1b3d13ec3dde834ca68a49876643333, type: 3}
+  - {fileID: 21300000, guid: 0eae2256497379149a49c576dde2a8fb, type: 3}
+  - {fileID: 21300000, guid: e59caa69f15eaca478f776f6ef3e4a55, type: 3}
 --- !u!1 &1424778113
 GameObject:
   m_ObjectHideFlags: 0
@@ -26977,7 +27014,6 @@ GameObject:
   - component: {fileID: 1442622736}
   - component: {fileID: 1442622735}
   - component: {fileID: 1442622734}
-  - component: {fileID: 1442622737}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -27050,16 +27086,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1442622737}
-        m_TargetAssemblyTypeName: StageChoice, Assembly-CSharp
-        m_MethodName: OnClickStageEnterButton
-        m_Mode: 1
+      - m_Target: {fileID: 2053561535}
+        m_TargetAssemblyTypeName: Michsky.LSS.LSS_Manager, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Stage3
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1442622735
@@ -27100,23 +27136,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442622731}
   m_CullTransparentMesh: 1
---- !u!114 &1442622737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442622731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ce5df03026f2094b9644b309e4765ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 2
-  backgrounds:
-  - {fileID: 1621437318}
-  - {fileID: 2081295388}
-  - {fileID: 666430605}
 --- !u!1 &1444732611
 GameObject:
   m_ObjectHideFlags: 0
@@ -29209,7 +29228,6 @@ GameObject:
   - component: {fileID: 1534494763}
   - component: {fileID: 1534494762}
   - component: {fileID: 1534494761}
-  - component: {fileID: 1534494764}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -29282,16 +29300,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1534494764}
-        m_TargetAssemblyTypeName: StageChoice, Assembly-CSharp
-        m_MethodName: OnClickStageEnterButton
-        m_Mode: 1
+      - m_Target: {fileID: 2053561535}
+        m_TargetAssemblyTypeName: Michsky.LSS.LSS_Manager, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Stage1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1534494762
@@ -29332,23 +29350,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534494758}
   m_CullTransparentMesh: 1
---- !u!114 &1534494764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1534494758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ce5df03026f2094b9644b309e4765ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 0
-  backgrounds:
-  - {fileID: 1621437318}
-  - {fileID: 2081295388}
-  - {fileID: 666430605}
 --- !u!1 &1547247313
 GameObject:
   m_ObjectHideFlags: 0
@@ -34137,7 +34138,6 @@ GameObject:
   - component: {fileID: 1732023219}
   - component: {fileID: 1732023218}
   - component: {fileID: 1732023217}
-  - component: {fileID: 1732023220}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -34210,16 +34210,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1732023220}
-        m_TargetAssemblyTypeName: StageChoice, Assembly-CSharp
-        m_MethodName: OnClickStageEnterButton
-        m_Mode: 1
+      - m_Target: {fileID: 6701696399993753870, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+        m_TargetAssemblyTypeName: Michsky.LSS.LSS_Manager, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Stage2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1732023218
@@ -34260,23 +34260,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732023214}
   m_CullTransparentMesh: 1
---- !u!114 &1732023220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732023214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ce5df03026f2094b9644b309e4765ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 1
-  backgrounds:
-  - {fileID: 1621437318}
-  - {fileID: 2081295388}
-  - {fileID: 666430605}
 --- !u!1 &1733461490
 GameObject:
   m_ObjectHideFlags: 0
@@ -40324,7 +40307,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1141682642}
   m_HandleRect: {fileID: 1141682641}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -40448,6 +40431,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050900474}
   m_CullTransparentMesh: 1
+--- !u!1001 &2053561534
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 101771621840281176, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_Name
+      value: LSS Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701696399993753870, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724440855286089916, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724440855286089916, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724440855286089916, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724440855286089916, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724440855286089916, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724440855286089916, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724440855286089916, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724440855286089916, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724440855286089916, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724440855286089916, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724440855286089916, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+--- !u!114 &2053561535 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6701696399993753870, guid: 60cd7d1d3c2a39b4dab0d209f41ea8da, type: 3}
+  m_PrefabInstance: {fileID: 2053561534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691872b4669c9ee45847d2d10286d82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2058797411
 GameObject:
   m_ObjectHideFlags: 0
@@ -41469,7 +41524,7 @@ GameObject:
   - component: {fileID: 2147295970}
   - component: {fileID: 2147295969}
   m_Layer: 5
-  m_Name: GoldText
+  m_Name: GoldAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -15,12 +15,12 @@ MonoBehaviour:
   level: 1
   atk: 4
   maxHp: 100
-  hp: 98
+  hp: 100
   hpSpeed: 0
   mp: 300
   maxMp: 300
   mpSpeed: 1
-  maxXp: 300
+  maxXp: 400
   xp: 0
   atkSpeed: 1
   addAtkSpeed: 0

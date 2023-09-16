@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1758209648038758994}
   - component: {fileID: 9158518948686652184}
   - component: {fileID: 1637421758669538229}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DeadEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 9077455866415034017}
   - component: {fileID: 4781969279422739828}
   - component: {fileID: 8343532459156539246}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Damaged_Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,9 +227,10 @@ GameObject:
   - component: {fileID: 4997569786978112912}
   - component: {fileID: 4997569786978112942}
   - component: {fileID: 4997569786978112943}
-  m_Layer: 0
+  - component: {fileID: 5421111126197460374}
+  m_Layer: 7
   m_Name: Monster2
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -386,6 +387,32 @@ MonoBehaviour:
   isAtk: 1
   isDead: 0
   attackRadius: 0.5
+--- !u!61 &5421111126197460374
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4997115618663697830}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.21209121, y: 1.9742434}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.7018867, y: 4.9885}
+  m_EdgeRadius: 0
 --- !u!1 &4997569786106204343
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4997569786106204342}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +461,7 @@ GameObject:
   - component: {fileID: 4997569786205409504}
   - component: {fileID: 4997569786205409534}
   - component: {fileID: 4997569786205409535}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +537,7 @@ GameObject:
   - component: {fileID: 4997569787320299501}
   - component: {fileID: 4997569787320299499}
   - component: {fileID: 4997569787320299500}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 4997569787320299499}
-  target: {fileID: 0}
+  target: {fileID: 4996153345618914108}
 --- !u!1 &4997569787561965566
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +642,7 @@ GameObject:
   - component: {fileID: 4997569787561965565}
   - component: {fileID: 4997569787561965563}
   - component: {fileID: 4997569787561965564}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,7 +719,7 @@ GameObject:
   - component: {fileID: 4997569787782121058}
   - component: {fileID: 4997569787782121059}
   - component: {fileID: 4997569787782121060}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

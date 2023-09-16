@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c26c619792b3a2c4dbb7e9b1b1487670, type: 3}
   m_Name: Monster3
   m_EditorClassIdentifier: 
-  atk: 0
-  hp: 0
-  maxHp: 0
+  atk: 100
+  hp: 2000
+  maxHp: 2000
+  gold: 1000
+  goldIndex: 0
+  xp: 1000

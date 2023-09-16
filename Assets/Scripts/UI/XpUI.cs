@@ -14,7 +14,6 @@ public class XpUI : MonoBehaviour
     void SetXp()
     {
         var stat = GameManager.Inst.playerStat;
-        Debug.Log(stat.xp / stat.maxXp);
         xpBar.fillAmount = stat.xp / stat.maxXp;
         levelText.text = stat.level.ToString();
         percentText.text = "(" + ((stat.xp / stat.maxXp) * 100).ToString("F2") + "%)";

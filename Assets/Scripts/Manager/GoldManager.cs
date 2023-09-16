@@ -4,11 +4,17 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class GoldManager : MonoSingleton<GoldManager>
 {
+    public GameObject goldText;
     public TextMeshProUGUI text;
     public Money gold;
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
         gold = new Money();
@@ -23,10 +29,8 @@ public class GoldManager : MonoSingleton<GoldManager>
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            gold.EarnMoney(Money.ReturnMoney(0, 100));
-        }
+        if(goldText == null) goldText = GameObject.Find("GoldAmountText");
+        if (text == null) text = goldText.GetComponent<TextMeshProUGUI>();
         GoldText(gold);
     }
 }
