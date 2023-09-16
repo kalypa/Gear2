@@ -24,6 +24,7 @@ public class PlayerTransform : SkillManager
     public Animator darkEffect;
     public bool isTransform = false;
     public bool isAuto = false;
+    public AudioSource transformSound;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -113,6 +114,7 @@ public class PlayerTransform : SkillManager
     {
         if (skillStats[index].costMana <= GameManager.Inst.playerStat.mp)
         {
+            transformSound.Play();
             darkEffect.SetBool("Atk", false);
             player.UseMana(GameManager.Inst.playerStat.mp, skillStats[index].costMana);
             isTransform = true;

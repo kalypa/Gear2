@@ -19,6 +19,7 @@ public class PlayerSkill : MainSkillManager
     private PlayerEvent player;
     public bool isSkillAtk = false;
     public bool isAuto = false;
+    public AudioSource[] skillSounds = new AudioSource[3];
     private void Start()
     {
         player = GetComponent<PlayerEvent>();
@@ -53,6 +54,7 @@ public class PlayerSkill : MainSkillManager
     void MainSkill()
     {
         ShakeCamera.Inst.Shake();
+        SkillSound();
         if (GameManager.Inst.playerTransform.playermode != 3) skillList[GameManager.Inst.playerTransform.playermode - 1].transform.position = SkillIndex();
         else SkillAngle(skillStat[2].attackRadius);
         skillList[GameManager.Inst.playerTransform.playermode - 1].SetTrigger("Skill");
@@ -60,7 +62,10 @@ public class PlayerSkill : MainSkillManager
         player.UseMana(GameManager.Inst.playerStat.mp, skillStat[GameManager.Inst.playerTransform.playermode - 1].costMana);
         SkillAtk();
     }
-
+    void SkillSound()
+    {
+        skillSounds[GameManager.Inst.playerTransform.playermode - 1].Play();
+    }
     bool IsInAttackRange(float radius)
     {
         if (NearMonsterPosition(radius).x == transform.position.x && NearMonsterPosition(radius).y == transform.position.y) return false;

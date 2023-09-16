@@ -6,6 +6,8 @@ public class PlayerAtk : AtkModule<Animator>
 {
     public Animator whiteEffect;
     public Animator normalEffect;
+    public AudioSource atkSound;
+    public AudioSource whitePassiveAtkSound;
     int atkCount = 0;
     protected override void Start()
     {
@@ -17,6 +19,7 @@ public class PlayerAtk : AtkModule<Animator>
     {
         if (isAtk && !isDead && !GameManager.Inst.playerTransform.isTransform && !GameManager.Inst.playerskill.isSkillAtk)
         {
+            atkSound.Play();
             var gm = GameManager.Inst;
             var mode = GetComponent<PlayerTransform>().playermode;
             isAtk = false;
@@ -46,6 +49,7 @@ public class PlayerAtk : AtkModule<Animator>
             atkCount += 1;
             if (atkCount % 3 == 0)
             {
+                whitePassiveAtkSound.Play();
                 whiteEffect.SetTrigger("Atk");
                 whiteEffect.GetComponent<WhitePassive>().Move();
             }

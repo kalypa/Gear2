@@ -59,6 +59,10 @@ public class MonsterEvent : MonoBehaviour, StatEvent, IPoolObject
             animator.AnimationState.SetAnimation(0, "Dead", false);
             inst.playermove.isAtk = false;
             inst.playerStat.xp += inst.monsterStats[inst.currentStage].xp;
+            inst.playerStat.hp += inst.playerStat.healHp;
+            if(inst.playerStat.hp > inst.playerStat.maxHp) inst.playerStat.hp = inst.playerStat.maxHp;
+            inst.playerStat.mp += inst.playerStat.healMp;
+            if (inst.playerStat.mp > inst.playerStat.maxMp) inst.playerStat.mp = inst.playerStat.maxMp;
             Invoke("DeadEffect", 1f);
         }
     }
