@@ -35,7 +35,7 @@ public class PlayerSkill : MainSkillManager
                 if (isUsed)
                 {
                     SkillAction();
-                    isUsed = false;
+                    
                 }
             }
         }
@@ -53,6 +53,7 @@ public class PlayerSkill : MainSkillManager
 
     void MainSkill() //스킬 사용
     {
+        isUsed = false;
         ShakeCamera.Inst.Shake();
         SkillSound();
         if (GameManager.Inst.playerTransform.playermode != 3) skillList[GameManager.Inst.playerTransform.playermode - 1].transform.position = SkillIndex();

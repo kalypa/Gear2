@@ -12,23 +12,41 @@ public class StatLevelUp : MonoBehaviour
     public Text statLevel;
     public StatSO statSO;
     public Image maxImage;
+    private int divideNum = 0;
+
     void Update() => AddStat();
 
     public void OnClickStatLevelUpButton() //스탯 레벨업 버튼 클릭
     {
-        if(statSO.prize <= GoldManager.Inst.gold.getmoney())
+        if(GoldManager.Inst.gold.Index > 0)
         {
-            if (statSO.index != 3)
+            if (statSO.prize / divideNum <= GoldManager.Inst.gold.getmoney())
             {
-                StatLevel();
+                SpendGold();
             }
-            else
-            {
-                GameManager.Inst.playerStat.addAtkSpeed += statSO.addStatF;
-            }
-            GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(statSO.goldIndex, statSO.prize));
-            statSO.level += 1;
         }
+        else
+        {
+            if (statSO.prize <= GoldManager.Inst.gold.getmoney())
+            {
+                SpendGold();
+            }
+        }
+    }
+
+    void SpendGold()
+    {
+        if (statSO.index != 3)
+        {
+            StatLevel();
+        }
+        else
+        {
+            GameManager.Inst.playerStat.addAtkSpeed += statSO.addStatF;
+        }
+        if (divideNum > 0) GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(statSO.goldIndex, statSO.prize));
+        else GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(GoldManager.Inst.gold.Index, statSO.prize));
+        statSO.level += 1;
     }
     int Stats() => statSO.index switch //증가시킬 스탯 판별
     {
@@ -74,12 +92,13 @@ public class StatLevelUp : MonoBehaviour
 
     void AddStat() //스탯 증가
     {
-        if(statSO.index != 3) nextStat.text = (Stats() + statSO.addStat).ToString();
+        divideNum = GoldManager.Inst.gold.Index * 1000;
+        if (statSO.prize % 1000 == 0) statSO.goldIndex += 1;
+        if (statSO.index != 3) nextStat.text = (Stats() + statSO.addStat).ToString();
         else nextStat.text = (Stats() + (int)(statSO.addStatF * 100)).ToString() + "%";
         statSO.prize = statSO.level * 10;
-        //if (statSO.prize >= 1000) statSO.goldIndex += 1;
         statLevel.text = statSO.level.ToString();
         if(statSO.level == statSO.maxLevel) maxImage.gameObject.SetActive(true);
-        goldText.text = (statSO.prize).ToString();
+        goldText.text = statSO.prize.ToString();
     }
 }

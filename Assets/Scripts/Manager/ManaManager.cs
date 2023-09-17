@@ -31,6 +31,12 @@ public class ManaManager : MonoBehaviour
                 scarceTexts[i].text = "";
                 coolTimeText[i].enabled = true;
             }
+            else if(GameManager.Inst.playerskill.isUseSkill || GameManager.Inst.playerTransform.isUseSkill)
+            {
+                if (skillFillAmounts[i].fillAmount == 1) skillFillAmounts[i].fillAmount = 0;
+                scarceTexts[i].text = "";
+                coolTimeText[i].enabled = true;
+            }
         }
     }
 
@@ -43,6 +49,12 @@ public class ManaManager : MonoBehaviour
             coolTimeText[4].enabled = false;
         }
         else if (GameManager.Inst.playerskill.isUseSkill && GameManager.Inst.playerTransform.isUseSkill)
+        {
+            if (skillFillAmounts[4].fillAmount == 1) skillFillAmounts[4].fillAmount = 0;
+            scarceTexts[4].text = "";
+            coolTimeText[4].enabled = true;
+        }
+        else if(GameManager.Inst.playerskill.isUseSkill || GameManager.Inst.playerTransform.isUseSkill)
         {
             if (skillFillAmounts[4].fillAmount == 1) skillFillAmounts[4].fillAmount = 0;
             scarceTexts[4].text = "";

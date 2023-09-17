@@ -17,5 +17,5 @@ MonoBehaviour:
   maxLevel: 100
   addStat: 1
   addStatF: 0
-  prize: 10
+  prize: 20
   goldIndex: 0

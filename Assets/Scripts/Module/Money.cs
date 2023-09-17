@@ -57,7 +57,6 @@ public class Money
         if (index > 0)
         {
             current = money[index] + ((double)money[index - 1] / 1000);
-            Debug.Log(current);
         }
         else
         {

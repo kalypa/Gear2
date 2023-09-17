@@ -42,9 +42,9 @@ public class MainSkillManager : MonoBehaviour
         {
             skillFillAmount.fillAmount = 0;
             skillCoolTimeText.text = "";
-            isUseSkill = true;
             isUsed = true;
+            isUseSkill = true;
             yield break;
-        }
+        };
     }
 }

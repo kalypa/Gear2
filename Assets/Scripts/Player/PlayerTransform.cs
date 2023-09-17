@@ -60,19 +60,19 @@ public class PlayerTransform : SkillManager
                 if (playermode == 1)
                 {
                     ChangeForm("NormalToDark_Translate", "NormalToDark", toDarkButton, darkToNormalButton, mainSkillSprite[1], 2, 2, 1);
-                    isUsed = false;
+                    
                 }
                 else if (playermode == 2)
                 {
                     ChangeForm("DarkToWhite_Translate", "DarkToWhite", toWhiteButton, whiteToNormalButton, mainSkillSprite[2], 3, 3, 0);
-                    isUsed = false;
+                    
                     darkToNormalButton.SetActive(false);
                     toDarkButton.SetActive(true);
                 }
                 else if (playermode == 3)
                 {
                     ChangeForm("WhiteToNormal_Translate", "WhiteToNormal", whiteToNormalButton, toWhiteButton, mainSkillSprite[0], 1, 1, 0);
-                    isUsed = false;
+                    
                 }
             }
         }
@@ -114,6 +114,7 @@ public class PlayerTransform : SkillManager
     { //º¯½Å
         if (skillStats[index].costMana <= GameManager.Inst.playerStat.mp)
         {
+            isUsed = false;
             transformSound.Play();
             darkEffect.SetBool("Atk", false);
             player.UseMana(GameManager.Inst.playerStat.mp, skillStats[index].costMana);
