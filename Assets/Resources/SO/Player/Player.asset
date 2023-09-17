@@ -19,7 +19,7 @@ MonoBehaviour:
   hpSpeed: 1
   mp: 300
   maxMp: 300
-  mpSpeed: 2
+  mpSpeed: 1
   maxXp: 300
   xp: 0
   atkSpeed: 1

@@ -32,15 +32,15 @@ public class SkillLevelUp : MonoBehaviour
     }
     void SpendGold()
     {
+        if (skill.prize % 1000 == 0) skill.goldIndex += 1;
         skill.damage += skill.addDamage;
-        if (divideNum > 0) GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(skill.goldIndex, skill.prize));
+        if (skill.goldIndex > 0) GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(skill.goldIndex, skill.prize / divideNum));
         else GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(skill.goldIndex, skill.prize));
         skill.level += 1;
     }
     void SetSkillStat() //스킬 스탯 세팅
     {
         divideNum = GoldManager.Inst.gold.Index * 1000;
-        if (skill.prize % 1000 == 0) skill.goldIndex += 1;
         skill.prize = skill.level * 100;
         goldText.text = skill.prize.ToString();
         skillLevel.text = skill.level.ToString();

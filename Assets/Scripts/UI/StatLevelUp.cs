@@ -36,6 +36,7 @@ public class StatLevelUp : MonoBehaviour
 
     void SpendGold()
     {
+        if (statSO.prize % 1000 == 0) statSO.goldIndex += 1;
         if (statSO.index != 3)
         {
             StatLevel();
@@ -44,7 +45,7 @@ public class StatLevelUp : MonoBehaviour
         {
             GameManager.Inst.playerStat.addAtkSpeed += statSO.addStatF;
         }
-        if (divideNum > 0) GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(statSO.goldIndex, statSO.prize));
+        if (statSO.goldIndex > 0) GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(statSO.goldIndex, statSO.prize / divideNum));
         else GoldManager.Inst.gold.SpendMoney(Money.ReturnMoney(GoldManager.Inst.gold.Index, statSO.prize));
         statSO.level += 1;
     }
@@ -93,7 +94,6 @@ public class StatLevelUp : MonoBehaviour
     void AddStat() //Ω∫≈» ¡ı∞°
     {
         divideNum = GoldManager.Inst.gold.Index * 1000;
-        if (statSO.prize % 1000 == 0) statSO.goldIndex += 1;
         if (statSO.index != 3) nextStat.text = (Stats() + statSO.addStat).ToString();
         else nextStat.text = (Stats() + (int)(statSO.addStatF * 100)).ToString() + "%";
         statSO.prize = statSO.level * 10;
